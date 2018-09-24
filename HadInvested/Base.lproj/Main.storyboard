@@ -13,7 +13,7 @@
         <!--HadInvested-->
         <scene sceneID="KpE-Pg-RMj">
             <objects>
-                <viewController id="lKm-0s-IJn" sceneMemberID="viewController">
+                <viewController id="lKm-0s-IJn" customClass="CalculateViewController" customModule="HadInvested" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iTJ-td-Du7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,7 +163,7 @@
         <!--Regrets-->
         <scene sceneID="kLu-h7-NUA">
             <objects>
-                <tableViewController id="Xhp-nt-43N" sceneMemberID="viewController">
+                <tableViewController id="Xhp-nt-43N" customClass="RegretsTableViewController" customModule="HadInvested" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6zZ-g1-Ana">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
