@@ -17,6 +17,8 @@
 		13A504AF21595B53008BA32E /* CalculateResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A504AE21595B53008BA32E /* CalculateResultViewController.swift */; };
 		13A504B121595D2E008BA32E /* RegretsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A504B021595D2E008BA32E /* RegretsTableViewController.swift */; };
 		13A504B721596EC3008BA32E /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A504B621596EC3008BA32E /* APIController.swift */; };
+		13A504B921597D34008BA32E /* CryptoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A504B821597D34008BA32E /* CryptoData.swift */; };
+		13A504BC21597D52008BA32E /* StockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A504BB21597D52008BA32E /* StockData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		13A504AE21595B53008BA32E /* CalculateResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateResultViewController.swift; sourceTree = "<group>"; };
 		13A504B021595D2E008BA32E /* RegretsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegretsTableViewController.swift; sourceTree = "<group>"; };
 		13A504B621596EC3008BA32E /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		13A504B821597D34008BA32E /* CryptoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoData.swift; sourceTree = "<group>"; };
+		13A504BB21597D52008BA32E /* StockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 				13A5048221594CEB008BA32E /* Assets.xcassets */,
 				13A5048421594CEB008BA32E /* LaunchScreen.storyboard */,
 				13A5048721594CEB008BA32E /* Info.plist */,
+				13A504BA21597D3A008BA32E /* Models */,
 			);
 			path = HadInvested;
 			sourceTree = "<group>";
@@ -148,6 +153,15 @@
 				13A504B621596EC3008BA32E /* APIController.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		13A504BA21597D3A008BA32E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				13A504B821597D34008BA32E /* CryptoData.swift */,
+				13A504BB21597D52008BA32E /* StockData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +319,8 @@
 				13A504B121595D2E008BA32E /* RegretsTableViewController.swift in Sources */,
 				13A5047C21594CEA008BA32E /* AppDelegate.swift in Sources */,
 				13A504AD21595B28008BA32E /* CalculateViewController.swift in Sources */,
+				13A504BC21597D52008BA32E /* StockData.swift in Sources */,
+				13A504B921597D34008BA32E /* CryptoData.swift in Sources */,
 				13A504AF21595B53008BA32E /* CalculateResultViewController.swift in Sources */,
 				13A504B721596EC3008BA32E /* APIController.swift in Sources */,
 			);
