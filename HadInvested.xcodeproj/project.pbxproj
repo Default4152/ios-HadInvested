@@ -95,6 +95,7 @@
 		13A5047A21594CEA008BA32E /* HadInvested */ = {
 			isa = PBXGroup;
 			children = (
+				13A504AB21595A34008BA32E /* View Controllers */,
 				13A5047B21594CEA008BA32E /* AppDelegate.swift */,
 				13A5047F21594CEA008BA32E /* Main.storyboard */,
 				13A5048221594CEB008BA32E /* Assets.xcassets */,
@@ -120,6 +121,13 @@
 				13A5049D21594CEB008BA32E /* Info.plist */,
 			);
 			path = HadInvestedUITests;
+			sourceTree = "<group>";
+		};
+		13A504AB21595A34008BA32E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
