@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+struct CryptoData: Codable {
+    let cryptoDaily: [String: [String: String]]
+    
+    enum CodingKeys: String, CodingKey {
+        case cryptoDaily = "Time Series (Digital Currency Daily)"
+    }
+}
