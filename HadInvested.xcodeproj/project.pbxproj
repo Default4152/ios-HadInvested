@@ -11,7 +11,6 @@
 		13A5048121594CEA008BA32E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A5047F21594CEA008BA32E /* Main.storyboard */; };
 		13A5048321594CEB008BA32E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A5048221594CEB008BA32E /* Assets.xcassets */; };
 		13A5048621594CEB008BA32E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A5048421594CEB008BA32E /* LaunchScreen.storyboard */; };
-		13A5049121594CEB008BA32E /* HadInvestedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A5049021594CEB008BA32E /* HadInvestedTests.swift */; };
 		13A5049C21594CEB008BA32E /* HadInvestedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A5049B21594CEB008BA32E /* HadInvestedUITests.swift */; };
 		13A504AD21595B28008BA32E /* CalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A504AC21595B28008BA32E /* CalculateViewController.swift */; };
 		13A504AF21595B53008BA32E /* CalculateResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A504AE21595B53008BA32E /* CalculateResultViewController.swift */; };
@@ -19,6 +18,7 @@
 		13A504B721596EC3008BA32E /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A504B621596EC3008BA32E /* APIController.swift */; };
 		13A504B921597D34008BA32E /* CryptoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A504B821597D34008BA32E /* CryptoData.swift */; };
 		13A504BC21597D52008BA32E /* StockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A504BB21597D52008BA32E /* StockData.swift */; };
+		13A504BE21598F1D008BA32E /* HadInvestedAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A504BD21598F1D008BA32E /* HadInvestedAPITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,6 @@
 		13A5048521594CEB008BA32E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13A5048721594CEB008BA32E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13A5048C21594CEB008BA32E /* HadInvestedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HadInvestedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		13A5049021594CEB008BA32E /* HadInvestedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HadInvestedTests.swift; sourceTree = "<group>"; };
 		13A5049221594CEB008BA32E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13A5049721594CEB008BA32E /* HadInvestedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HadInvestedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A5049B21594CEB008BA32E /* HadInvestedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HadInvestedUITests.swift; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		13A504B621596EC3008BA32E /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		13A504B821597D34008BA32E /* CryptoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoData.swift; sourceTree = "<group>"; };
 		13A504BB21597D52008BA32E /* StockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockData.swift; sourceTree = "<group>"; };
+		13A504BD21598F1D008BA32E /* HadInvestedAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HadInvestedAPITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,8 +122,8 @@
 		13A5048F21594CEB008BA32E /* HadInvestedTests */ = {
 			isa = PBXGroup;
 			children = (
-				13A5049021594CEB008BA32E /* HadInvestedTests.swift */,
 				13A5049221594CEB008BA32E /* Info.plist */,
+				13A504BD21598F1D008BA32E /* HadInvestedAPITests.swift */,
 			);
 			path = HadInvestedTests;
 			sourceTree = "<group>";
@@ -330,7 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13A5049121594CEB008BA32E /* HadInvestedTests.swift in Sources */,
+				13A504BE21598F1D008BA32E /* HadInvestedAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
