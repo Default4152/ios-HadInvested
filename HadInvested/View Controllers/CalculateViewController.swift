@@ -10,36 +10,42 @@ import UIKit
 
 class CalculateViewController: UIViewController {
     let apiController = APIController()
+    let date = Calendar.current.date(byAdding: .day, value: -1, to: Date())
     let formatter = DateFormatter()
 
     @IBOutlet var symbolTextField: UITextField!
     @IBOutlet var amountTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var isCrypto: UISwitch!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         formatter.dateFormat = "yyyy-MM-dd"
     }
-
+    
     @IBAction func calculate(_ sender: Any) {
         guard let symbol = symbolTextField.text,
-            let amount = amountTextField.text else { return }
+            let amount = amountTextField.text,
+            let yesterday = date else { return }
+        
         let chosenDate = formatter.string(from: datePicker.date)
-
+        let yesterdayAsString = self.formatter.string(from: yesterday)
+        
         if isCrypto.isOn {
             apiController.getCryptoData(with: symbol) { (cryptoData) in
                 guard let cryptoData = cryptoData,
+                    let currentPrice = cryptoData.cryptoDaily[yesterdayAsString]?["1a. open (USD)"],
                     let chosenDateClosePrice = cryptoData.cryptoDaily[chosenDate]?["4a. close (USD)"],
-                    let amount = Double(amount) else { return }
-
-                if let profitsHadInvested = Double(chosenDateClosePrice) {
-                    print(profitsHadInvested * amount)
-                }
+                    let amount = Double(amount),
+                    let closePriceAsDouble = Double(chosenDateClosePrice),
+                    let currentPriceAsDouble = Double(currentPrice) else { return }
+                
+                let currencyPurchased = amount / closePriceAsDouble
+                print(currentPriceAsDouble * currencyPurchased)
             }
         } else {
             // Get stock data for chosen date & today
         }
     }
-
+    
 }
