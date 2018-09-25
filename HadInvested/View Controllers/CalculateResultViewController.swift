@@ -78,6 +78,12 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                 }
                 let stockPurchased = amount / closePriceAsDouble
                 self.finalAmount = currentPriceAsDouble * stockPurchased
+                DispatchQueue.main.async {
+                    finalAmountLabel.text = "$\(String(format: "%.2f", currentPriceAsDouble * stockPurchased))"
+                    amountHadInvestedLabel.text = "$\(String(format: "%.2f", amount))"
+                    symbolLabel.text = symbol
+                    dateLabel.text = chosenDate
+                }
                 NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
             }
         }
