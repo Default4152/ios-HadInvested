@@ -7,11 +7,23 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-class CalculateViewController: UIViewController {
+class CalculateViewController: UIViewController, NVActivityIndicatorViewable {
     let apiController = APIController()
     let date = Calendar.current.date(byAdding: .day, value: -1, to: Date())
     let formatter = DateFormatter()
+    let activityData = ActivityData(size: nil,
+                                    message: "Calculating...",
+                                    messageFont: nil,
+                                    messageSpacing: nil,
+                                    type: .squareSpin,
+                                    color: nil,
+                                    padding: nil,
+                                    displayTimeThreshold: nil,
+                                    minimumDisplayTime: 2,
+                                    backgroundColor: .gray,
+                                    textColor: nil)
 
     @IBOutlet var symbolTextField: UITextField!
     @IBOutlet var amountTextField: UITextField!
@@ -24,6 +36,7 @@ class CalculateViewController: UIViewController {
     }
 
     @IBAction func calculate(_ sender: Any) {
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData, nil)
         guard let symbol = symbolTextField.text,
             let amount = amountTextField.text,
             let yesterday = date else { return }
@@ -38,10 +51,14 @@ class CalculateViewController: UIViewController {
                     let chosenDateClosePrice = cryptoData.cryptoDaily[chosenDate]?["4a. close (USD)"],
                     let amount = Double(amount),
                     let closePriceAsDouble = Double(chosenDateClosePrice),
-                    let currentPriceAsDouble = Double(currentPrice) else { return }
+                    let currentPriceAsDouble = Double(currentPrice) else {
+                        NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+                        return
+                }
 
                 let currencyPurchased = amount / closePriceAsDouble
                 print(currentPriceAsDouble * currencyPurchased)
+                NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
             }
         } else {
             apiController.getStockData(with: symbol) { (stockData) in
@@ -51,11 +68,12 @@ class CalculateViewController: UIViewController {
                     let amount = Double(amount),
                     let closePriceAsDouble = Double(chosenDateClosePrice),
                     let currentPriceAsDouble = Double(currentPrice) else {
-                    // Alert users with alert that we do not have data for the chosen date, try again
+                        NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
                         return
                 }
                 let stockPurchased = amount / closePriceAsDouble
                 print(currentPriceAsDouble * stockPurchased)
+                NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
             }
         }
     }
