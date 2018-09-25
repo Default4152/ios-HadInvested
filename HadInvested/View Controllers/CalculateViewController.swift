@@ -17,20 +17,20 @@ class CalculateViewController: UIViewController {
     @IBOutlet var amountTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var isCrypto: UISwitch!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         formatter.dateFormat = "yyyy-MM-dd"
     }
-    
+
     @IBAction func calculate(_ sender: Any) {
         guard let symbol = symbolTextField.text,
             let amount = amountTextField.text,
             let yesterday = date else { return }
-        
+
         let chosenDate = formatter.string(from: datePicker.date)
         let yesterdayAsString = self.formatter.string(from: yesterday)
-        
+
         if isCrypto.isOn {
             apiController.getCryptoData(with: symbol) { (cryptoData) in
                 guard let cryptoData = cryptoData,
@@ -39,7 +39,7 @@ class CalculateViewController: UIViewController {
                     let amount = Double(amount),
                     let closePriceAsDouble = Double(chosenDateClosePrice),
                     let currentPriceAsDouble = Double(currentPrice) else { return }
-                
+
                 let currencyPurchased = amount / closePriceAsDouble
                 print(currentPriceAsDouble * currencyPurchased)
             }
@@ -50,11 +50,13 @@ class CalculateViewController: UIViewController {
                     let chosenDateClosePrice = stockData.timeSeriesDaily[chosenDate]?.close,
                     let amount = Double(amount),
                     let closePriceAsDouble = Double(chosenDateClosePrice),
-                    let currentPriceAsDouble = Double(currentPrice) else { return }
+                    let currentPriceAsDouble = Double(currentPrice) else {
+                    // Alert users with alert that we do not have data for the chosen date, try again
+                        return
+                }
                 let stockPurchased = amount / closePriceAsDouble
                 print(currentPriceAsDouble * stockPurchased)
             }
         }
     }
-    
 }
