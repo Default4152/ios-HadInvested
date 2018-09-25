@@ -21,7 +21,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Aog-BZ-Rw9">
                                 <rect key="frame" x="27" y="146" width="320" height="372"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Stock Symbol" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CyH-Vo-5k8">
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Stock/Crypto Symbol (e.g. AAPL, BTC)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CyH-Vo-5k8">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -33,8 +33,22 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="Cdt-eX-oJe">
+                                        <rect key="frame" x="0.0" y="76" width="320" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cryptocurrency?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olp-mF-X4a">
+                                                <rect key="frame" x="0.0" y="0.0" width="234" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bis-Hc-snI">
+                                                <rect key="frame" x="271" y="0.0" width="51" height="31"/>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxu-5S-brd">
-                                        <rect key="frame" x="0.0" y="76" width="320" height="258"/>
+                                        <rect key="frame" x="0.0" y="115" width="320" height="219"/>
                                         <date key="date" timeIntervalSinceReferenceDate="559501195.25957799">
                                             <!--2018-09-24 16:59:55 +0000-->
                                         </date>
@@ -52,6 +66,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="calculate:" destination="lKm-0s-IJn" eventType="touchUpInside" id="l2r-fS-U6u"/>
                                             <segue destination="Jm7-JL-un6" kind="show" id="ogC-ET-Hp1"/>
                                         </connections>
                                     </button>
@@ -68,6 +83,12 @@
                         <viewLayoutGuide key="safeArea" id="RrN-F2-Cuz"/>
                     </view>
                     <navigationItem key="navigationItem" title="HadInvested" id="MOC-RZ-J89"/>
+                    <connections>
+                        <outlet property="amountTextField" destination="wej-Dc-HQf" id="Bgp-y5-5e1"/>
+                        <outlet property="datePicker" destination="lxu-5S-brd" id="qGA-b1-Asb"/>
+                        <outlet property="isCrypto" destination="Bis-Hc-snI" id="ikL-aP-rLm"/>
+                        <outlet property="symbolTextField" destination="CyH-Vo-5k8" id="uML-Wb-ZUu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JVm-y5-Kg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
