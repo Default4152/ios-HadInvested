@@ -18,19 +18,19 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
     let formatter = DateFormatter()
     var finalAmount = 0.0
     var datePicker: UIDatePicker?
-    
+
     @IBOutlet var amountHadInvestedLabel: UILabel!
     @IBOutlet var symbolLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var finalAmountLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         formatter.dateFormat = "yyyy-MM-dd"
-        
+
         fetchData()
     }
-    
+
     func fetchData() {
         guard let amountHadInvestedLabel = amountHadInvestedLabel,
             let symbolLabel = symbolLabel,
@@ -40,10 +40,10 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
             let symbol = symbol,
             let datePicker = datePicker,
             let date = date else { return }
-        
+
         let chosenDate = formatter.string(from: datePicker.date)
         let yesterdayAsString = self.formatter.string(from: date)
-        
+
         if isCrypto {
             apiController.getCryptoData(with: symbol) { (cryptoData) in
                 guard let cryptoData = cryptoData,
@@ -52,10 +52,13 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                     let amount = Double(amount),
                     let closePriceAsDouble = Double(chosenDateClosePrice),
                     let currentPriceAsDouble = Double(currentPrice) else {
-                        NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+                        DispatchQueue.main.async {
+                            self.navigationController?.popViewController(animated: true)
+                            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+                        }
                         return
                 }
-                
+
                 let currencyPurchased = amount / closePriceAsDouble
                 DispatchQueue.main.async {
                     if currentPriceAsDouble * currencyPurchased < amount {
@@ -76,7 +79,10 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                     let amount = Double(amount),
                     let closePriceAsDouble = Double(chosenDateClosePrice),
                     let currentPriceAsDouble = Double(currentPrice) else {
-                        NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+                        DispatchQueue.main.async {
+                            self.navigationController?.popViewController(animated: true)
+                            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+                        }
                         return
                 }
                 let stockPurchased = amount / closePriceAsDouble

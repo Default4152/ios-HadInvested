@@ -34,21 +34,21 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="Cdt-eX-oJe">
-                                        <rect key="frame" x="0.0" y="76" width="320" height="31"/>
+                                        <rect key="frame" x="0.0" y="76" width="320" height="28"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cryptocurrency?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olp-mF-X4a">
-                                                <rect key="frame" x="0.0" y="0.0" width="234" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="234" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bis-Hc-snI">
-                                                <rect key="frame" x="271" y="0.0" width="51" height="31"/>
+                                                <rect key="frame" x="271" y="0.0" width="51" height="28"/>
                                             </switch>
                                         </subviews>
                                     </stackView>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxu-5S-brd">
-                                        <rect key="frame" x="0.0" y="115" width="320" height="219"/>
+                                        <rect key="frame" x="0.0" y="112" width="320" height="216"/>
                                         <date key="date" timeIntervalSinceReferenceDate="559501195.25957799">
                                             <!--2018-09-24 16:59:55 +0000-->
                                         </date>
@@ -60,8 +60,9 @@
                                         </date>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRS-TX-LHe">
-                                        <rect key="frame" x="0.0" y="342" width="320" height="30"/>
+                                        <rect key="frame" x="0.0" y="336" width="320" height="36"/>
                                         <color key="backgroundColor" red="0.47245536430000001" green="1" blue="0.53197581540000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Calculate">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -110,7 +111,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Add Regret">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="addRegret:" destination="Jm7-JL-un6" eventType="touchUpInside" id="DNB-cv-Tkb"/>
