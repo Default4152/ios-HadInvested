@@ -18,6 +18,7 @@ class APIController {
         urlSession.dataTask(with: stockDataURL) { (data, _, error) in
             if let error = error {
                 NSLog("Error fetching data: \(error)")
+                completion(nil)
                 return
             }
             guard let data = data else { return }
@@ -27,6 +28,7 @@ class APIController {
                 completion(stockData)
             } catch {
                 NSLog("Error decoding data: \(error)")
+                completion(nil)
             }
         }.resume()
     }
@@ -40,6 +42,7 @@ class APIController {
         urlSession.dataTask(with: cryptoDataURL) { (data, _, error) in
             if let error = error {
                 NSLog("Error fetching data: \(error)")
+                completion(nil)
                 return
             }
             guard let data = data else { return }
@@ -49,6 +52,7 @@ class APIController {
                 completion(cryptoData)
             } catch {
                 NSLog("Error decoding crypto data: \(error)")
+                completion(nil)
             }
         }.resume()
     }

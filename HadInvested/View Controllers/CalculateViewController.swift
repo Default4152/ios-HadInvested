@@ -9,7 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 
-class CalculateViewController: UIViewController, NVActivityIndicatorViewable {
+class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UITextFieldDelegate {
     let activityData = ActivityData(size: nil,
                                     message: "Calculating...",
                                     messageFont: nil,
@@ -26,9 +26,19 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable {
     @IBOutlet var amountTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var isCrypto: UISwitch!
+    
+    override func viewDidLoad() {
+        amountTextField.delegate = self
+    }
 
     @IBAction func calculate(_ sender: Any) {
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData, nil)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

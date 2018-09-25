@@ -66,7 +66,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                     }
                     finalAmountLabel.text = "$\(String(format: "%.2f", currentPriceAsDouble * currencyPurchased))"
                     amountHadInvestedLabel.text = "$\(String(format: "%.2f", amount))"
-                    symbolLabel.text = symbol
+                    symbolLabel.text = symbol.uppercased()
                     dateLabel.text = chosenDate
                 }
                 NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
@@ -90,7 +90,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                 DispatchQueue.main.async {
                     finalAmountLabel.text = "$\(String(format: "%.2f", currentPriceAsDouble * stockPurchased))"
                     amountHadInvestedLabel.text = "$\(String(format: "%.2f", amount))"
-                    symbolLabel.text = symbol
+                    symbolLabel.text = symbol.uppercased()
                     dateLabel.text = chosenDate
                 }
                 NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
