@@ -67,7 +67,7 @@
                                         </state>
                                         <connections>
                                             <action selector="calculate:" destination="lKm-0s-IJn" eventType="touchUpInside" id="l2r-fS-U6u"/>
-                                            <segue destination="Jm7-JL-un6" kind="show" id="ogC-ET-Hp1"/>
+                                            <segue destination="Jm7-JL-un6" kind="show" identifier="ShowCalculationSegue" id="cR9-Gl-eoW"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -94,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="2972" y="-344.07796101949026"/>
         </scene>
-        <!--View Controller-->
+        <!--Calculate Result View Controller-->
         <scene sceneID="s67-oE-AXq">
             <objects>
-                <viewController id="Jm7-JL-un6" sceneMemberID="viewController">
+                <viewController id="Jm7-JL-un6" customClass="CalculateResultViewController" customModule="HadInvested" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ya-9E-xz5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,8 +123,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7X-nY-PcG">
-                                        <rect key="frame" x="125" y="189" width="105.5" height="54"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7X-nY-PcG">
+                                        <rect key="frame" x="162" y="189" width="31" height="54"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -135,8 +135,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSs-CG-HkL">
-                                        <rect key="frame" x="125" y="315" width="105.5" height="54"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSs-CG-HkL">
+                                        <rect key="frame" x="120" y="315" width="115.5" height="54"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -145,6 +145,9 @@
                                         <rect key="frame" x="93.5" y="378" width="168" height="54"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <state key="normal" title="Add Regret"/>
+                                        <connections>
+                                            <action selector="addRegret:" destination="Jm7-JL-un6" eventType="touchUpInside" id="DNB-cv-Tkb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -158,6 +161,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nFK-rq-Nrl"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ztz-fX-Koh"/>
+                    <connections>
+                        <outlet property="amountHadInvestedLabel" destination="7lP-fr-d1J" id="7xZ-Te-zKX"/>
+                        <outlet property="dateLabel" destination="FnZ-wi-y5A" id="JkN-M7-8SJ"/>
+                        <outlet property="finalAmountLabel" destination="YK9-3D-olL" id="BBJ-Ls-Gdl"/>
+                        <outlet property="symbolLabel" destination="4yL-rl-Bc9" id="mGZ-ob-ypE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhE-yD-1NU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
