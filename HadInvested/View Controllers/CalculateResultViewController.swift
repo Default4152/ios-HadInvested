@@ -58,6 +58,9 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                 
                 let currencyPurchased = amount / closePriceAsDouble
                 DispatchQueue.main.async {
+                    if currentPriceAsDouble * currencyPurchased < amount {
+                        finalAmountLabel.textColor = .red
+                    }
                     finalAmountLabel.text = "$\(String(format: "%.2f", currentPriceAsDouble * currencyPurchased))"
                     amountHadInvestedLabel.text = "$\(String(format: "%.2f", amount))"
                     symbolLabel.text = symbol
