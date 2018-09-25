@@ -44,7 +44,16 @@ class CalculateViewController: UIViewController {
                 print(currentPriceAsDouble * currencyPurchased)
             }
         } else {
-            // Get stock data for chosen date & today
+            apiController.getStockData(with: symbol) { (stockData) in
+                guard let stockData = stockData,
+                    let currentPrice = stockData.timeSeriesDaily[yesterdayAsString]?.close,
+                    let chosenDateClosePrice = stockData.timeSeriesDaily[chosenDate]?.close,
+                    let amount = Double(amount),
+                    let closePriceAsDouble = Double(chosenDateClosePrice),
+                    let currentPriceAsDouble = Double(currentPrice) else { return }
+                let stockPurchased = amount / closePriceAsDouble
+                print(currentPriceAsDouble * stockPurchased)
+            }
         }
     }
     
