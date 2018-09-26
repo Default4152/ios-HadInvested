@@ -26,6 +26,7 @@ class APIController {
             guard let data = data else { return }
             do {
                 let decoder = JSONDecoder()
+                print(data)
                 let stockData = try decoder.decode(StockData.self, from: data)
                 completion(stockData)
             } catch {
@@ -47,9 +48,11 @@ class APIController {
                 completion(nil)
                 return
             }
+            
             guard let data = data else { return }
             do {
                 let decoder = JSONDecoder()
+                print(data)
                 let cryptoData = try decoder.decode(CryptoData.self, from: data)
                 completion(cryptoData)
             } catch {
@@ -83,30 +86,31 @@ class APIController {
         }.resume()
     }
     
-    func getRegretsFromFirebase(completion: @escaping (Error?) -> Void) {
+    func getRegretsFromFirebase(completion: @escaping (Error?, [Regret]?) -> Void) {
         let url = firebaseURL.appendingPathExtension("json")
-        
+        var regrets: [Regret] = []
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
                 NSLog("Error with getting regrets: \(error)")
-                completion(error)
+                completion(error, nil)
                 return
             }
             
             guard let data = data else {
                 NSLog("No data returned from firebase")
-                completion(nil)
+                completion(nil, nil)
                 return
             }
             
             do {
                 let decoder = JSONDecoder()
-                let regrets = try decoder.decode(Regrets.self, from: data)
-                print(regrets)
+                let regretsJSON = try decoder.decode(Regrets.self, from: data).values
+                regrets = regretsJSON.compactMap { $0 }
             } catch let error {
                 NSLog("Error decoding data: \(error)")
             }
+            
+            completion(nil, regrets)
         }.resume()
     }
-    
 }

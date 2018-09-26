@@ -10,7 +10,7 @@ import Foundation
 
 typealias Regrets = [String: Regret]
 
-struct Regret: Codable {
+struct Regret: Codable, Equatable {
     init(dateOfRegret: String, stockSymbol: String, identifier: String = UUID().uuidString) {
         self.dateOfRegret = dateOfRegret
         self.stockSymbol = stockSymbol
