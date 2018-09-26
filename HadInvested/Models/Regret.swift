@@ -8,19 +8,13 @@
 
 import Foundation
 
-struct Regrets: Codable {
-    let regrets: [String: Regret]
-    
-    enum CodingKeys: String, CodingKey {
-        case regrets = "Regrets"
-    }
-}
+typealias Regrets = [String: Regret]
 
-struct Regret: Codable, Equatable {
-    init(dateOfRegret: String, stockSymbol: String) {
+struct Regret: Codable {
+    init(dateOfRegret: String, stockSymbol: String, identifier: String = UUID().uuidString) {
         self.dateOfRegret = dateOfRegret
         self.stockSymbol = stockSymbol
+        self.identifier = identifier
     }
-    
-    let dateOfRegret, stockSymbol: String
+    let dateOfRegret, stockSymbol, identifier: String
 }

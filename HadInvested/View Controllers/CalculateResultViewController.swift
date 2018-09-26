@@ -104,6 +104,12 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
     @IBAction func addRegret(_ sender: Any) {
         guard let symbol = symbol else { return }
         let regret = Regret(dateOfRegret: formatter.string(from: Date()), stockSymbol: symbol)
+        apiController.putRegretToFirebase(with: regret) { (error) in
+            if let error = error {
+                NSLog("Error putting regret to firebase via addRegret: \(error)")
+                return
+            }
+        }
         navigationController?.popViewController(animated: true)
     }
 }
