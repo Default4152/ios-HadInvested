@@ -12,6 +12,7 @@ class RegretsTableViewController: UITableViewController {
     let apiController = APIController()
     var regrets: [Regret] = []
     var regretsDict: [String: Int] = [:]
+    var regretsSorted: [(key: String, value: Int)] = []
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -33,6 +34,7 @@ class RegretsTableViewController: UITableViewController {
                     }
                 }
                 self.regrets = regrets
+                self.regretsSorted = self.regretsDict.valueKeySorted
             }
             
             DispatchQueue.main.async {
@@ -49,9 +51,15 @@ class RegretsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RegretCell", for: indexPath)
-        cell.textLabel?.text = Array(regretsDict.keys)[indexPath.row]
-        cell.detailTextLabel?.text = "\(String(Array(regretsDict.values)[indexPath.row])) regrets"
+        cell.textLabel?.text = regretsSorted[indexPath.row].key
+        cell.detailTextLabel?.text = "\(regretsSorted[indexPath.row].value) regrets"
         return cell
     }
 
+}
+
+extension Dictionary where Value: Comparable {
+    var valueKeySorted: [(Key, Value)] {
+        return sorted{ if $0.value != $1.value { return $0.value > $1.value } else { return String(describing: $0.key) < String(describing: $1.key) } }
+    }
 }
