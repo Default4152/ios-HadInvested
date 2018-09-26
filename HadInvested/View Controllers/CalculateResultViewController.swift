@@ -10,14 +10,15 @@ import UIKit
 import NVActivityIndicatorView
 
 class CalculateResultViewController: UIViewController, NVActivityIndicatorViewable {
+    var apiController = APIController()
     var amount: String?
     var symbol: String?
     var isCrypto: Bool = false
-    var apiController = APIController()
     let yesterdaysDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())
     let formatter = DateFormatter()
     var finalAmount = 0.0
     var datePicker: UIDatePicker?
+    var fadeOut = NVActivityIndicatorView.DEFAULT_FADE_OUT_ANIMATION
 
     @IBOutlet var amountHadInvestedLabel: UILabel!
     @IBOutlet var symbolLabel: UILabel!
@@ -40,8 +41,9 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
             let symbol = symbol,
             let datePicker = datePicker,
             let yesterdaysDate = yesterdaysDate else { return }
+        let isWeekend = Calendar.current.isDateInWeekend(datePicker.date)
+        let chosenDate = isWeekend ? formatter.string(from: datePicker.date + 172800) : formatter.string(from: datePicker.date)
 
-        let chosenDate = formatter.string(from: datePicker.date)
         let yesterdayAsString = self.formatter.string(from: yesterdaysDate)
 
         if isCrypto {
@@ -54,7 +56,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                     let currentPriceAsDouble = Double(currentPrice) else {
                         DispatchQueue.main.async {
                             self.navigationController?.popViewController(animated: true)
-                            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+                            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(self.fadeOut)
                         }
                         return
                 }
@@ -69,7 +71,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                     symbolLabel.text = symbol.uppercased()
                     dateLabel.text = chosenDate
                 }
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+                NVActivityIndicatorPresenter.sharedInstance.stopAnimating(self.fadeOut)
             }
         } else {
             apiController.getStockData(with: symbol) { (stockData) in
@@ -79,9 +81,10 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                     let amount = Double(amount),
                     let closePriceAsDouble = Double(chosenDateClosePrice),
                     let currentPriceAsDouble = Double(currentPrice) else {
+
                         DispatchQueue.main.async {
                             self.navigationController?.popViewController(animated: true)
-                            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+                            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(self.fadeOut)
                         }
                         return
                 }
@@ -94,9 +97,14 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                     finalAmountLabel.text = "$\(String(format: "%.2f", currentPriceAsDouble * stockPurchased))"
                     amountHadInvestedLabel.text = "$\(String(format: "%.2f", amount))"
                     symbolLabel.text = symbol.uppercased()
-                    dateLabel.text = chosenDate
+                    if isWeekend {
+                        dateLabel.text = "Adjusted Date: \(self.formatter.string(from: datePicker.date + 172800))"
+                    } else {
+                        dateLabel.text = chosenDate
+                    }
+
                 }
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+                NVActivityIndicatorPresenter.sharedInstance.stopAnimating(self.fadeOut)
             }
         }
     }

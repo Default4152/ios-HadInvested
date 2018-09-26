@@ -26,7 +26,6 @@ class APIController {
             guard let data = data else { return }
             do {
                 let decoder = JSONDecoder()
-                print(data)
                 let stockData = try decoder.decode(StockData.self, from: data)
                 completion(stockData)
             } catch {
@@ -52,7 +51,6 @@ class APIController {
             guard let data = data else { return }
             do {
                 let decoder = JSONDecoder()
-                print(data)
                 let cryptoData = try decoder.decode(CryptoData.self, from: data)
                 completion(cryptoData)
             } catch {

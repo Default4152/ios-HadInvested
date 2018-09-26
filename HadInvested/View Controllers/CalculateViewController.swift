@@ -21,7 +21,7 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
                                     minimumDisplayTime: 2,
                                     backgroundColor: .gray,
                                     textColor: nil)
-
+    
     @IBOutlet var symbolTextField: UITextField!
     @IBOutlet var amountTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
@@ -30,7 +30,7 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
     override func viewDidLoad() {
         amountTextField.delegate = self
     }
-
+    
     @IBAction func calculate(_ sender: Any) {
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData, nil)
     }

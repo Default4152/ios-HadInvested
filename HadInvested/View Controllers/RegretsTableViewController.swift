@@ -13,10 +13,10 @@ class RegretsTableViewController: UITableViewController {
     var regrets: [Regret] = []
     var regretsDict: [String: Int] = [:]
     var regretsSorted: [(key: String, value: Int)] = []
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         apiController.getRegretsFromFirebase { (error, regrets) in
             if let error = error {
                 NSLog("Error fetching from table view: \(error)")
@@ -28,7 +28,7 @@ class RegretsTableViewController: UITableViewController {
                 for regret in regrets {
                     if self.regretsDict.keys.contains(regret.stockSymbol) {
                         guard let currentRegret = self.regretsDict[regret.stockSymbol] else { return }
-                        self.regretsDict.updateValue(currentRegret+1, forKey: regret.stockSymbol)
+                        self.regretsDict.updateValue(currentRegret + 1, forKey: regret.stockSymbol)
                     } else {
                         self.regretsDict[regret.stockSymbol] = 1
                     }
@@ -36,7 +36,7 @@ class RegretsTableViewController: UITableViewController {
                 self.regrets = regrets
                 self.regretsSorted = self.regretsDict.valueKeySorted
             }
-            
+
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -60,6 +60,12 @@ class RegretsTableViewController: UITableViewController {
 
 extension Dictionary where Value: Comparable {
     var valueKeySorted: [(Key, Value)] {
-        return sorted{ if $0.value != $1.value { return $0.value > $1.value } else { return String(describing: $0.key) < String(describing: $1.key) } }
+        return sorted {
+            if $0.value != $1.value {
+                return $0.value > $1.value
+            } else {
+                return String(describing: $0.key) < String(describing: $1.key)
+            }
+        }
     }
 }
