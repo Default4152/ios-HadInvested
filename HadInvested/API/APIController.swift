@@ -10,7 +10,7 @@ import Foundation
 
 class APIController {
     func getStockData(with stock: String, completion: @escaping (StockData?) -> Void) {
-        let url = URL(string: "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=\(stock)&outputsize=full&apikey=SEBO6A22C8K8OE0T")!
+        let url = URL(string: "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=\(stock)&outputsize=full&apikey=SEBO6A22C8K8OE0T")!
 
         let urlSession = URLSession.shared
         let stockDataURL = URLRequest(url: url)

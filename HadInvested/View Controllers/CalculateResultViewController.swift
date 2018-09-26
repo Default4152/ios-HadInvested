@@ -74,8 +74,8 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
         } else {
             apiController.getStockData(with: symbol) { (stockData) in
                 guard let stockData = stockData,
-                    let currentPrice = stockData.timeSeriesDaily[yesterdayAsString]?.close,
-                    let chosenDateClosePrice = stockData.timeSeriesDaily[chosenDate]?.close,
+                    let currentPrice = stockData.timeSeriesDaily[yesterdayAsString]?.adjustedClose,
+                    let chosenDateClosePrice = stockData.timeSeriesDaily[chosenDate]?.adjustedClose,
                     let amount = Double(amount),
                     let closePriceAsDouble = Double(chosenDateClosePrice),
                     let currentPriceAsDouble = Double(currentPrice) else {
@@ -88,6 +88,9 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                 let stockPurchased = amount / closePriceAsDouble
                 self.finalAmount = currentPriceAsDouble * stockPurchased
                 DispatchQueue.main.async {
+                    if currentPriceAsDouble * stockPurchased < amount {
+                        finalAmountLabel.textColor = .red
+                    }
                     finalAmountLabel.text = "$\(String(format: "%.2f", currentPriceAsDouble * stockPurchased))"
                     amountHadInvestedLabel.text = "$\(String(format: "%.2f", amount))"
                     symbolLabel.text = symbol.uppercased()
