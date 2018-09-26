@@ -14,7 +14,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
     var symbol: String?
     var isCrypto: Bool = false
     var apiController = APIController()
-    let date = Calendar.current.date(byAdding: .day, value: -1, to: Date())
+    let yesterdaysDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())
     let formatter = DateFormatter()
     var finalAmount = 0.0
     var datePicker: UIDatePicker?
@@ -39,10 +39,10 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
             let amount = amount,
             let symbol = symbol,
             let datePicker = datePicker,
-            let date = date else { return }
+            let yesterdaysDate = yesterdaysDate else { return }
 
         let chosenDate = formatter.string(from: datePicker.date)
-        let yesterdayAsString = self.formatter.string(from: date)
+        let yesterdayAsString = self.formatter.string(from: yesterdaysDate)
 
         if isCrypto {
             apiController.getCryptoData(with: symbol) { (cryptoData) in
@@ -102,6 +102,8 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
     }
 
     @IBAction func addRegret(_ sender: Any) {
-        // add regret and pop view controller
+        guard let symbol = symbol else { return }
+        let regret = Regret(dateOfRegret: formatter.string(from: Date()), stockSymbol: symbol)
+        navigationController?.popViewController(animated: true)
     }
 }
