@@ -10,8 +10,8 @@ import UIKit
 import NVActivityIndicatorView
 import SCLAlertView
 
-let kWarningTitle = "The date you have selected is not available."
-let kWarningSubtitle = "Please select a different date and try again."
+let kWarningTitle = "Something went wrong."
+let kWarningSubtitle = "Verify the date & symbol entered and try again."
 
 class CalculateResultViewController: UIViewController, NVActivityIndicatorViewable {
     var apiController = APIController()

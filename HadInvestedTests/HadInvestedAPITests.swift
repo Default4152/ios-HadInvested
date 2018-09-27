@@ -18,11 +18,11 @@ class HadInvestedAPITests: XCTestCase {
         apiController.getStockData(with: "AAPL") { (stockData) in
             guard let stockData = stockData else { return }
             XCTAssertNotNil(stockData)
-            XCTAssertEqual(stockData.timeSeriesDaily["2018-08-13"]?.close, "208.8700")
+            XCTAssertEqual(stockData.timeSeriesDaily["2018-08-13"]?.adjustedClose, "208.8700")
             expectation.fulfill()
         }
         
-        waitForExpectations(timeout: 2.0, handler: nil)
+        waitForExpectations(timeout: 5.0, handler: nil)
     }
     
     func testAPIGetCryptoData() {
@@ -36,7 +36,7 @@ class HadInvestedAPITests: XCTestCase {
             expectation.fulfill()
         }
         
-        waitForExpectations(timeout: 2.0, handler: nil)
+        waitForExpectations(timeout: 5.0, handler: nil)
     }
 
 }
