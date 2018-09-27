@@ -7,6 +7,7 @@ target 'HadInvested' do
 
   # Pods for HadInvested
 pod 'NVActivityIndicatorView'
+pod 'SCLAlertView'
 
   target 'HadInvestedTests' do
     inherit! :search_paths

@@ -8,6 +8,10 @@
 
 import UIKit
 import NVActivityIndicatorView
+import SCLAlertView
+
+let kWarningTitle = "The date you have selected is not available."
+let kWarningSubtitle = "Please select a different date and try again."
 
 class CalculateResultViewController: UIViewController, NVActivityIndicatorViewable {
     var apiController = APIController()
@@ -54,6 +58,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                 guard let cryptoData = cryptoData else { return }
                 if !cryptoData.cryptoDaily.keys.contains(chosenDate) {
                     DispatchQueue.main.async {
+                        _ = SCLAlertView().showWarning(kWarningTitle, subTitle: kWarningSubtitle)
                         self.navigationController?.popViewController(animated: true)
                         NVActivityIndicatorPresenter.sharedInstance.stopAnimating(self.fadeOut)
                     }
