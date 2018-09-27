@@ -2,17 +2,21 @@ PODS:
   - NVActivityIndicatorView (4.4.0):
     - NVActivityIndicatorView/Presenter (= 4.4.0)
   - NVActivityIndicatorView/Presenter (4.4.0)
+  - SCLAlertView (0.8)
 
 DEPENDENCIES:
   - NVActivityIndicatorView
+  - SCLAlertView
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - NVActivityIndicatorView
+    - SCLAlertView
 
 SPEC CHECKSUMS:
   NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
 
-PODFILE CHECKSUM: 9de74a98d5e4631a4f681710ac47c31039f3d59d
+PODFILE CHECKSUM: 9068fd8b57cbe47a2ac35c5a726042c24c9f99ee
 
 COCOAPODS: 1.5.3
