@@ -22,6 +22,7 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
                                     backgroundColor: .black,
                                     textColor: nil)
     
+    @IBOutlet var backButton: UIBarButtonItem!
     @IBOutlet var symbolTextField: UITextField!
     @IBOutlet var amountTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
@@ -32,6 +33,7 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
         amountTextField.delegate = self
         calculateButton.layer.cornerRadius = 4
         datePicker.maximumDate = Date()
+        backButton.tintColor = .white
     }
     
     @IBAction func calculate(_ sender: Any) {

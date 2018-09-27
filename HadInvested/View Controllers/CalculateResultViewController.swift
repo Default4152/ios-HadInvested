@@ -34,7 +34,6 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
         super.viewDidLoad()
         formatter.dateFormat = "yyyy-MM-dd"
         addRegretButton.layer.cornerRadius = 4
-        
         fetchData()
     }
 
