@@ -22,19 +22,25 @@
                                 <rect key="frame" x="27" y="146" width="320" height="427"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Stock/Crypto Symbol (e.g. AAPL, BTC)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CyH-Vo-5k8">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="vFN-wh-hA8"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$ Amount" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wej-Dc-HQf">
-                                        <rect key="frame" x="0.0" y="38" width="320" height="30"/>
+                                        <rect key="frame" x="0.0" y="48" width="320" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="yRo-zH-IPO"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="Cdt-eX-oJe">
-                                        <rect key="frame" x="0.0" y="76" width="320" height="31"/>
+                                        <rect key="frame" x="0.0" y="96" width="320" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cryptocurrency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olp-mF-X4a">
                                                 <rect key="frame" x="0.0" y="0.0" width="234" height="31"/>
@@ -48,7 +54,7 @@
                                         </subviews>
                                     </stackView>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="lxu-5S-brd">
-                                        <rect key="frame" x="0.0" y="115" width="320" height="268"/>
+                                        <rect key="frame" x="0.0" y="135" width="320" height="248"/>
                                         <date key="date" timeIntervalSinceReferenceDate="559501195.25957799">
                                             <!--2018-09-24 16:59:55 +0000-->
                                         </date>
