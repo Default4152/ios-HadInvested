@@ -19,7 +19,7 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
                                     padding: nil,
                                     displayTimeThreshold: nil,
                                     minimumDisplayTime: 2,
-                                    backgroundColor: .black,
+                                    backgroundColor: UIColor(red: 0.00, green: 0.48, blue: 1.00, alpha: 1.0),
                                     textColor: nil)
     
     @IBOutlet var backButton: UIBarButtonItem!

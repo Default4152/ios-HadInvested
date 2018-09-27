@@ -23,20 +23,23 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
     var finalAmount = 0.0
     var datePicker: UIDatePicker?
     var fadeOut = NVActivityIndicatorView.DEFAULT_FADE_OUT_ANIMATION
+    var numFormatter = NumberFormatter()
 
     @IBOutlet var amountHadInvestedLabel: UILabel!
     @IBOutlet var symbolLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var finalAmountLabel: UILabel!
     @IBOutlet var addRegretButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         formatter.dateFormat = "yyyy-MM-dd"
         addRegretButton.layer.cornerRadius = 4
+        numFormatter.numberStyle = .currency
+        numFormatter.maximumFractionDigits = 2;
         fetchData()
     }
-    
+
     func removeAnimationAndWarn() {
         DispatchQueue.main.async {
             _ = SCLAlertView().showWarning(kWarningTitle, subTitle: kWarningSubtitle)
@@ -58,8 +61,8 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
         let chosenDate = isWeekend ? formatter.string(from: datePicker.date + 172800) : formatter.string(from: datePicker.date)
 
         let yesterdayAsString = self.formatter.string(from: yesterdaysDate)
-        
-        
+
+
         if isCrypto {
             apiController.getCryptoData(with: symbol) { (cryptoData) in
                 guard let cryptoData = cryptoData else {
@@ -75,7 +78,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                     let amount = Double(amount),
                     let closePriceAsDouble = Double(chosenDateClosePrice),
                     let currentPriceAsDouble = Double(currentPrice) else {
-                        
+
                         DispatchQueue.main.async {
                             self.navigationController?.popViewController(animated: true)
                             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(self.fadeOut)
@@ -88,7 +91,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                     if currentPriceAsDouble * currencyPurchased < amount {
                         finalAmountLabel.textColor = .red
                     }
-                    finalAmountLabel.text = "$\(String(format: "%.2f", currentPriceAsDouble * currencyPurchased))"
+                    finalAmountLabel.text = self.numFormatter.string(from: NSNumber(value: currentPriceAsDouble * currencyPurchased))
                     amountHadInvestedLabel.text = "$\(String(format: "%.2f", amount))"
                     symbolLabel.text = symbol.uppercased()
                     dateLabel.text = chosenDate
@@ -123,7 +126,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                     if currentPriceAsDouble * stockPurchased < amount {
                         finalAmountLabel.textColor = .red
                     }
-                    finalAmountLabel.text = "$\(String(format: "%.2f", currentPriceAsDouble * stockPurchased))"
+                    finalAmountLabel.text = self.numFormatter.string(from: NSNumber(value: currentPriceAsDouble * stockPurchased))
                     amountHadInvestedLabel.text = "$\(String(format: "%.2f", amount))"
                     symbolLabel.text = symbol.uppercased()
                     if isWeekend {

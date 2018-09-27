@@ -10,7 +10,7 @@ import Foundation
 
 class APIController {
     private let firebaseURL = URL(string: "https://hadinvested.firebaseio.com/")!
-    
+
     func getStockData(with stock: String, completion: @escaping (StockData?) -> Void) {
         let url = URL(string: "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=\(stock)&outputsize=full&apikey=SEBO6A22C8K8OE0T")!
 
@@ -47,7 +47,7 @@ class APIController {
                 completion(nil)
                 return
             }
-            
+
             guard let data = data else { return }
             do {
                 let decoder = JSONDecoder()
@@ -59,31 +59,31 @@ class APIController {
             }
         }.resume()
     }
-    
+
     func putRegretToFirebase(with regret: Regret, completion: @escaping (Error?) -> Void) {
         let identifier = regret.identifier
         let url = firebaseURL.appendingPathComponent(identifier).appendingPathExtension("json")
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "PUT"
-        
+
         do {
             let encoder = JSONEncoder()
             urlRequest.httpBody = try encoder.encode(regret)
         } catch {
             NSLog("Error with encoding regret: \(error)")
         }
-        
+
         URLSession.shared.dataTask(with: urlRequest) { (_, _, error) in
             if let error = error {
                 NSLog("Error with PUTting regret: \(error)")
                 completion(error)
                 return
             }
-            
+
             completion(nil)
         }.resume()
     }
-    
+
     func getRegretsFromFirebase(completion: @escaping (Error?, [Regret]?) -> Void) {
         let url = firebaseURL.appendingPathExtension("json")
         var regrets: [Regret] = []
@@ -93,13 +93,13 @@ class APIController {
                 completion(error, nil)
                 return
             }
-            
+
             guard let data = data else {
                 NSLog("No data returned from firebase")
                 completion(nil, nil)
                 return
             }
-            
+
             do {
                 let decoder = JSONDecoder()
                 let regretsJSON = try decoder.decode(Regrets.self, from: data).values
@@ -107,7 +107,7 @@ class APIController {
             } catch let error {
                 NSLog("Error decoding data: \(error)")
             }
-            
+
             completion(nil, regrets)
         }.resume()
     }
