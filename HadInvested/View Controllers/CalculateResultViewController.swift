@@ -36,6 +36,14 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
         addRegretButton.layer.cornerRadius = 4
         fetchData()
     }
+    
+    func removeAnimationAndWarn() {
+        DispatchQueue.main.async {
+            _ = SCLAlertView().showWarning(kWarningTitle, subTitle: kWarningSubtitle)
+            self.navigationController?.popViewController(animated: true)
+            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(self.fadeOut)
+        }
+    }
 
     func fetchData() {
         guard let amountHadInvestedLabel = amountHadInvestedLabel,
@@ -54,13 +62,12 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
         
         if isCrypto {
             apiController.getCryptoData(with: symbol) { (cryptoData) in
-                guard let cryptoData = cryptoData else { return }
+                guard let cryptoData = cryptoData else {
+                    self.removeAnimationAndWarn()
+                    return
+                }
                 if !cryptoData.cryptoDaily.keys.contains(chosenDate) {
-                    DispatchQueue.main.async {
-                        _ = SCLAlertView().showWarning(kWarningTitle, subTitle: kWarningSubtitle)
-                        self.navigationController?.popViewController(animated: true)
-                        NVActivityIndicatorPresenter.sharedInstance.stopAnimating(self.fadeOut)
-                    }
+                    self.removeAnimationAndWarn()
                     return
                 }
                 guard let currentPrice = cryptoData.cryptoDaily[yesterdayAsString]?["1a. open (USD)"],
@@ -90,13 +97,12 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
             }
         } else {
             apiController.getStockData(with: symbol) { (stockData) in
-                guard let stockData = stockData else { return }
+                guard let stockData = stockData else {
+                    self.removeAnimationAndWarn()
+                    return
+                }
                 if !stockData.timeSeriesDaily.keys.contains(chosenDate) {
-                    DispatchQueue.main.async {
-                        _ = SCLAlertView().showWarning(kWarningTitle, subTitle: kWarningSubtitle)
-                        self.navigationController?.popViewController(animated: true)
-                        NVActivityIndicatorPresenter.sharedInstance.stopAnimating(self.fadeOut)
-                    }
+                    self.removeAnimationAndWarn()
                     return
                 }
                 guard let currentPrice = stockData.timeSeriesDaily[yesterdayAsString]?.adjustedClose,
