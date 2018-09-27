@@ -19,16 +19,19 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
                                     padding: nil,
                                     displayTimeThreshold: nil,
                                     minimumDisplayTime: 2,
-                                    backgroundColor: .gray,
+                                    backgroundColor: .black,
                                     textColor: nil)
     
     @IBOutlet var symbolTextField: UITextField!
     @IBOutlet var amountTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var isCrypto: UISwitch!
+    @IBOutlet var calculateButton: UIButton!
     
     override func viewDidLoad() {
         amountTextField.delegate = self
+        calculateButton.layer.cornerRadius = 4
+        datePicker.maximumDate = Date()
     }
     
     @IBAction func calculate(_ sender: Any) {

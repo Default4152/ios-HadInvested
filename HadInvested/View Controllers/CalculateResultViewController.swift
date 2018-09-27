@@ -24,11 +24,13 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
     @IBOutlet var symbolLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var finalAmountLabel: UILabel!
-
+    @IBOutlet var addRegretButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         formatter.dateFormat = "yyyy-MM-dd"
-
+        addRegretButton.layer.cornerRadius = 4
+        
         fetchData()
     }
 
@@ -45,15 +47,24 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
         let chosenDate = isWeekend ? formatter.string(from: datePicker.date + 172800) : formatter.string(from: datePicker.date)
 
         let yesterdayAsString = self.formatter.string(from: yesterdaysDate)
-
+        
+        
         if isCrypto {
             apiController.getCryptoData(with: symbol) { (cryptoData) in
-                guard let cryptoData = cryptoData,
-                    let currentPrice = cryptoData.cryptoDaily[yesterdayAsString]?["1a. open (USD)"],
+                guard let cryptoData = cryptoData else { return }
+                if !cryptoData.cryptoDaily.keys.contains(chosenDate) {
+                    DispatchQueue.main.async {
+                        self.navigationController?.popViewController(animated: true)
+                        NVActivityIndicatorPresenter.sharedInstance.stopAnimating(self.fadeOut)
+                    }
+                    return
+                }
+                guard let currentPrice = cryptoData.cryptoDaily[yesterdayAsString]?["1a. open (USD)"],
                     let chosenDateClosePrice = cryptoData.cryptoDaily[chosenDate]?["4a. close (USD)"],
                     let amount = Double(amount),
                     let closePriceAsDouble = Double(chosenDateClosePrice),
                     let currentPriceAsDouble = Double(currentPrice) else {
+                        
                         DispatchQueue.main.async {
                             self.navigationController?.popViewController(animated: true)
                             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(self.fadeOut)
@@ -75,8 +86,15 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
             }
         } else {
             apiController.getStockData(with: symbol) { (stockData) in
-                guard let stockData = stockData,
-                    let currentPrice = stockData.timeSeriesDaily[yesterdayAsString]?.adjustedClose,
+                guard let stockData = stockData else { return }
+                if !stockData.timeSeriesDaily.keys.contains(chosenDate) {
+                    DispatchQueue.main.async {
+                        self.navigationController?.popViewController(animated: true)
+                        NVActivityIndicatorPresenter.sharedInstance.stopAnimating(self.fadeOut)
+                    }
+                    return
+                }
+                guard let currentPrice = stockData.timeSeriesDaily[yesterdayAsString]?.adjustedClose,
                     let chosenDateClosePrice = stockData.timeSeriesDaily[chosenDate]?.adjustedClose,
                     let amount = Double(amount),
                     let closePriceAsDouble = Double(chosenDateClosePrice),

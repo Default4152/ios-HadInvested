@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Aog-BZ-Rw9">
-                                <rect key="frame" x="27" y="146" width="320" height="372"/>
+                                <rect key="frame" x="27" y="146" width="320" height="427"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Stock/Crypto Symbol (e.g. AAPL, BTC)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CyH-Vo-5k8">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
@@ -34,37 +34,31 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="Cdt-eX-oJe">
-                                        <rect key="frame" x="0.0" y="76" width="320" height="28"/>
+                                        <rect key="frame" x="0.0" y="76" width="320" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cryptocurrency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olp-mF-X4a">
-                                                <rect key="frame" x="0.0" y="0.0" width="234" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="234" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bis-Hc-snI">
-                                                <rect key="frame" x="271" y="0.0" width="51" height="28"/>
+                                                <rect key="frame" x="271" y="0.0" width="51" height="31"/>
                                             </switch>
                                         </subviews>
                                     </stackView>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxu-5S-brd">
-                                        <rect key="frame" x="0.0" y="112" width="320" height="216"/>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="lxu-5S-brd">
+                                        <rect key="frame" x="0.0" y="115" width="320" height="268"/>
                                         <date key="date" timeIntervalSinceReferenceDate="559501195.25957799">
                                             <!--2018-09-24 16:59:55 +0000-->
                                         </date>
-                                        <date key="minimumDate" timeIntervalSinceReferenceDate="-159541200">
-                                            <!--1995-12-12 11:00:00 +0000-->
-                                        </date>
-                                        <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
-                                            <!--2037-12-31 11:00:00 +0000-->
-                                        </date>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRS-TX-LHe">
-                                        <rect key="frame" x="0.0" y="336" width="320" height="36"/>
-                                        <color key="backgroundColor" red="0.47245536430000001" green="1" blue="0.53197581540000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <rect key="frame" x="0.0" y="391" width="320" height="36"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Calculate">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="calculate:" destination="lKm-0s-IJn" eventType="touchUpInside" id="l2r-fS-U6u"/>
@@ -74,18 +68,21 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="RrN-F2-Cuz" firstAttribute="bottom" secondItem="Aog-BZ-Rw9" secondAttribute="bottom" constant="100" id="8T5-i8-6Tb"/>
+                            <constraint firstItem="RrN-F2-Cuz" firstAttribute="bottom" secondItem="Aog-BZ-Rw9" secondAttribute="bottom" constant="45" id="8T5-i8-6Tb"/>
                             <constraint firstItem="Aog-BZ-Rw9" firstAttribute="leading" secondItem="RrN-F2-Cuz" secondAttribute="leading" constant="27" id="DpN-EB-oEl"/>
                             <constraint firstItem="RrN-F2-Cuz" firstAttribute="trailing" secondItem="Aog-BZ-Rw9" secondAttribute="trailing" constant="28" id="bec-8S-fxi"/>
                             <constraint firstItem="Aog-BZ-Rw9" firstAttribute="top" secondItem="RrN-F2-Cuz" secondAttribute="top" constant="30" id="rKt-uR-9NE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RrN-F2-Cuz"/>
                     </view>
-                    <navigationItem key="navigationItem" title="HadInvested" id="MOC-RZ-J89"/>
+                    <navigationItem key="navigationItem" title="HadInvested" id="MOC-RZ-J89">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="9wl-Nt-wdt"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="amountTextField" destination="wej-Dc-HQf" id="Bgp-y5-5e1"/>
+                        <outlet property="calculateButton" destination="tRS-TX-LHe" id="zn4-rp-zkF"/>
                         <outlet property="datePicker" destination="lxu-5S-brd" id="qGA-b1-Asb"/>
                         <outlet property="isCrypto" destination="Bis-Hc-snI" id="ikL-aP-rLm"/>
                         <outlet property="symbolTextField" destination="CyH-Vo-5k8" id="uML-Wb-ZUu"/>
@@ -105,53 +102,56 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCk-OF-dLL">
                                 <rect key="frame" x="16" y="531" width="343" height="39"/>
-                                <color key="backgroundColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="zOW-QZ-xTG"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <state key="normal" title="Add Regret">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="addRegret:" destination="Jm7-JL-un6" eventType="touchUpInside" id="DNB-cv-Tkb"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="m14-vb-5QH">
-                                <rect key="frame" x="16" y="132" width="343" height="264"/>
+                                <rect key="frame" x="16" y="132" width="343" height="274"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1000.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lP-fr-d1J">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="45.5"/>
+                                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                        <color key="textColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AAPL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yL-rl-Bc9">
-                                        <rect key="frame" x="0.0" y="44" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="45.5" width="343" height="46"/>
+                                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FnZ-wi-y5A">
-                                        <rect key="frame" x="0.0" y="88" width="343" height="44"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-09-24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FnZ-wi-y5A">
+                                        <rect key="frame" x="0.0" y="91.5" width="343" height="45.5"/>
+                                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7X-nY-PcG">
-                                        <rect key="frame" x="0.0" y="132" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="137" width="343" height="45.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$342943.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK9-3D-olL">
-                                        <rect key="frame" x="0.0" y="176" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="182.5" width="343" height="46"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                        <color key="textColor" red="0.47245536430000001" green="1" blue="0.53197581540000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSs-CG-HkL">
-                                        <rect key="frame" x="0.0" y="220" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="228.5" width="343" height="45.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -159,13 +159,13 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="nFK-rq-Nrl" firstAttribute="trailing" secondItem="m14-vb-5QH" secondAttribute="trailing" constant="16" id="3P9-0O-W56"/>
                             <constraint firstItem="nFK-rq-Nrl" firstAttribute="trailing" secondItem="yCk-OF-dLL" secondAttribute="trailing" constant="16" id="h8I-3t-pQm"/>
                             <constraint firstItem="m14-vb-5QH" firstAttribute="top" secondItem="nFK-rq-Nrl" secondAttribute="top" constant="16" id="jcY-BU-e1R"/>
                             <constraint firstItem="m14-vb-5QH" firstAttribute="leading" secondItem="nFK-rq-Nrl" secondAttribute="leading" constant="16" id="nTf-2U-nyB"/>
-                            <constraint firstItem="yCk-OF-dLL" firstAttribute="top" secondItem="m14-vb-5QH" secondAttribute="bottom" constant="135" id="oiK-yg-r4Y"/>
+                            <constraint firstItem="yCk-OF-dLL" firstAttribute="top" secondItem="m14-vb-5QH" secondAttribute="bottom" constant="125" id="oiK-yg-r4Y"/>
                             <constraint firstItem="yCk-OF-dLL" firstAttribute="leading" secondItem="nFK-rq-Nrl" secondAttribute="leading" constant="16" id="u3g-Zu-hHA"/>
                             <constraint firstItem="nFK-rq-Nrl" firstAttribute="bottom" secondItem="yCk-OF-dLL" secondAttribute="bottom" constant="48" id="z3A-4Y-hi0"/>
                         </constraints>
@@ -173,6 +173,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ztz-fX-Koh"/>
                     <connections>
+                        <outlet property="addRegretButton" destination="yCk-OF-dLL" id="RCK-Bw-bRz"/>
                         <outlet property="amountHadInvestedLabel" destination="7lP-fr-d1J" id="7xZ-Te-zKX"/>
                         <outlet property="dateLabel" destination="FnZ-wi-y5A" id="JkN-M7-8SJ"/>
                         <outlet property="finalAmountLabel" destination="YK9-3D-olL" id="BBJ-Ls-Gdl"/>
@@ -209,6 +210,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexBackgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegretCell" textLabel="5Ac-Bx-XgL" detailTextLabel="8Fk-i2-pnk" rowHeight="80" style="IBUITableViewCellStyleSubtitle" id="4Aw-IR-JX6">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
