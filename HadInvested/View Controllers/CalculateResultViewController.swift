@@ -94,6 +94,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                 guard let stockData = stockData else { return }
                 if !stockData.timeSeriesDaily.keys.contains(chosenDate) {
                     DispatchQueue.main.async {
+                        _ = SCLAlertView().showWarning(kWarningTitle, subTitle: kWarningSubtitle)
                         self.navigationController?.popViewController(animated: true)
                         NVActivityIndicatorPresenter.sharedInstance.stopAnimating(self.fadeOut)
                     }
