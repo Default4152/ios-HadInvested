@@ -92,7 +92,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                         finalAmountLabel.textColor = .red
                     }
                     finalAmountLabel.text = self.numFormatter.string(from: NSNumber(value: currentPriceAsDouble * currencyPurchased))
-                    amountHadInvestedLabel.text = "$\(String(format: "%.2f", amount))"
+                    amountHadInvestedLabel.text = self.numFormatter.string(from: NSNumber(value: amount))
                     symbolLabel.text = symbol.uppercased()
                     dateLabel.text = chosenDate
                 }
@@ -127,7 +127,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                         finalAmountLabel.textColor = .red
                     }
                     finalAmountLabel.text = self.numFormatter.string(from: NSNumber(value: currentPriceAsDouble * stockPurchased))
-                    amountHadInvestedLabel.text = "$\(String(format: "%.2f", amount))"
+                    amountHadInvestedLabel.text = self.numFormatter.string(from: NSNumber(value: amount))
                     symbolLabel.text = symbol.uppercased()
                     if isWeekend {
                         dateLabel.text = "Adjusted Date: \(self.formatter.string(from: datePicker.date + 172800))"
