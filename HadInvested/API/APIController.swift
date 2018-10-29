@@ -10,13 +10,17 @@ import Foundation
 
 class APIController {
     private let firebaseURL = URL(string: "https://hadinvested.firebaseio.com/")!
-
-    func getStockData(with stock: String, completion: @escaping (StockData?) -> Void) {
-        let url = URL(string: "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=\(stock)&outputsize=full&apikey=SEBO6A22C8K8OE0T")!
-
+    let formatter = DateFormatter()
+    
+    func getStockDataForSpecifiedDate(with stock: String, date: Date, completion: @escaping (StockData?) -> Void) {
+        formatter.dateFormat = "dd-MM-yyyy"
+        
+        let chosenDate = formatter.string(from: date)
+        let url = URL(string: "https://api.intrinio.com/prices?identifier=\(stock)&start_date=\(chosenDate)&end_date=\(chosenDate)&frequency=daily&api_key=OjRjOTYyMDFiYzc4MWUzNDgxMmRiMjM0NTFhMjQ2Zjc2")!
+        
         let urlSession = URLSession.shared
         let stockDataURL = URLRequest(url: url)
-
+        
         urlSession.dataTask(with: stockDataURL) { (data, _, error) in
             if let error = error {
                 NSLog("Error fetching data: \(error)")
@@ -26,8 +30,38 @@ class APIController {
             guard let data = data else { return }
             do {
                 let decoder = JSONDecoder()
-                let stockData = try decoder.decode(StockData.self, from: data)
-                completion(stockData)
+                let stockData = try decoder.decode(Quotes.self, from: data)
+                if (stockData.resultCount == 0) {
+                    completion(nil)
+                    return
+                }
+                completion(stockData.data[0])
+            } catch {
+                NSLog("Error decoding data: \(error)")
+                completion(nil)
+            }
+        }.resume()
+    }
+    
+    func getStockDataForToday(with stock: String, completion: @escaping (StockData?) -> Void) {
+        formatter.dateFormat = "dd-MM-yyyy"
+        let today = formatter.string(from: Date())
+        let url = URL(string: "https://api.intrinio.com/prices?identifier=\(stock)&start_date=\(today)&end_date=\(today)&frequency=daily&api_key=OjRjOTYyMDFiYzc4MWUzNDgxMmRiMjM0NTFhMjQ2Zjc2")!
+        
+        let urlSession = URLSession.shared
+        let stockDataURL = URLRequest(url: url)
+        
+        urlSession.dataTask(with: stockDataURL) { (data, _, error) in
+            if let error = error {
+                NSLog("Error fetching data: \(error)")
+                completion(nil)
+                return
+            }
+            guard let data = data else { return }
+            do {
+                let decoder = JSONDecoder()
+                let stockData = try decoder.decode(Quotes.self, from: data)
+                completion(stockData.data[0])
             } catch {
                 NSLog("Error decoding data: \(error)")
                 completion(nil)

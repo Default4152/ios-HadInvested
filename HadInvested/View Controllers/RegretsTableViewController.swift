@@ -44,7 +44,6 @@ class RegretsTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Array(regretsDict.keys).count
     }

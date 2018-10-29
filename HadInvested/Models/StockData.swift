@@ -8,23 +8,23 @@
 
 import Foundation
 
-struct StockData: Codable {
-    let timeSeriesDaily: [String: TimeSeriesDaily]
+struct Quotes: Codable {
+    let data: [StockData]
+    let resultCount: Int
     
     enum CodingKeys: String, CodingKey {
-        case timeSeriesDaily = "Time Series (Daily)"
+        case data
+        case resultCount = "result_count"
     }
 }
 
-struct TimeSeriesDaily: Codable {
-    let open, high, low, close: String
-    let adjustedClose: String
+struct StockData: Codable {
+    let date: String
+    let adjOpen, adjClose: Double
     
     enum CodingKeys: String, CodingKey {
-        case open = "1. open"
-        case high = "2. high"
-        case low = "3. low"
-        case close = "4. close"
-        case adjustedClose = "5. adjusted close"
+        case date
+        case adjOpen = "adj_open"
+        case adjClose = "adj_close"
     }
 }
