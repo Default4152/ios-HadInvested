@@ -144,11 +144,9 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
             let amount = amount,
             let datePicker = datePicker else { return }
         
-        // Get USER ID to create regret
-        // Random key for this particular regret "post"
-        let uid = Auth.auth().currentUser?.uid
+        let uid = Auth.auth().currentUser?.uid // Get User ID to create regret post in Firebase
         let ref = Database.database().reference()
-        let key = ref.child("regrets").childByAutoId().key // Specific string for only 1 post
+        let key = ref.child("regrets").childByAutoId().key // Specific string for only 1 post, Random key for this particular regret "post"
         
         let regretDict = ["userID": uid as Any,
                       "dateOfRegret": formatter.string(from: Date()),

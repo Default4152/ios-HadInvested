@@ -100,30 +100,6 @@ class APIController {
             }
         }.resume()
     }
-    /*
-    func putRegretToFirebase(with regret: Regret, completion: @escaping (Error?) -> Void) {
-        let identifier = regret.identifier
-        let url = firebaseURL.appendingPathComponent(identifier).appendingPathExtension("json")
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "PUT"
-
-        do {
-            let encoder = JSONEncoder()
-            urlRequest.httpBody = try encoder.encode(regret)
-        } catch {
-            NSLog("Error with encoding regret: \(error)")
-        }
-
-        URLSession.shared.dataTask(with: urlRequest) { (_, _, error) in
-            if let error = error {
-                NSLog("Error with PUTting regret: \(error)")
-                completion(error)
-                return
-            }
-
-            completion(nil)
-        }.resume()
-    }*/
     
     func getRegretsFromFirebase(completion: @escaping (Error?, [Regret]?) -> Void) {
         let url = firebaseURL.appendingPathExtension("json")

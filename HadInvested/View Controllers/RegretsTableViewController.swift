@@ -18,19 +18,6 @@ class RegretsTableViewController: UITableViewController {
             if let error = error {
                 NSLog("Error fetching from table view: \(error)")
             }
-//            if regrets != self.regrets {
-//                self.regretsDict = [:]
-//                for regret in regrets {
-//                    if self.regretsDict.keys.contains(regret.stockSymbol) {
-//                        guard let currentRegret = self.regretsDict[regret.stockSymbol] else { return }
-//                        self.regretsDict.updateValue(currentRegret + 1, forKey: regret.stockSymbol)
-//                    } else {
-//                        self.regretsDict[regret.stockSymbol] = 1
-//                    }
-//                }
-//                self.regrets = regrets
-//                self.regretsSorted = self.regretsDict.valueKeySorted
-//            }
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -47,20 +34,8 @@ class RegretsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RegretCell", for: indexPath)
         let regret = apiController.regrets[indexPath.row]
         cell.textLabel?.text = regret.stock
-        cell.detailTextLabel?.text = "\(regret.author)"
+        cell.detailTextLabel?.text = "\(regret.dateOfRegret)"
         return cell
     }
     
-}
-
-extension Dictionary where Value: Comparable {
-    var valueKeySorted: [(Key, Value)] {
-        return sorted {
-            if $0.value != $1.value {
-                return $0.value > $1.value
-            } else {
-                return String(describing: $0.key) < String(describing: $1.key)
-            }
-        }
-    }
 }
