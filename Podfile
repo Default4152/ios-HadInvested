@@ -10,6 +10,7 @@ pod 'NVActivityIndicatorView'
 pod 'SCLAlertView'
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'Firebase/Database'
 pod 'GoogleSignIn'
 
   target 'HadInvestedTests' do
