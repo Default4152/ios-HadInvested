@@ -10,9 +10,6 @@ import UIKit
 
 class RegretsTableViewController: UITableViewController {
     let apiController = APIController()
-    var regrets: [Regret] = []
-    var regretsDict: [String: Int] = [:]
-    var regretsSorted: [(key: String, value: Int)] = []
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -21,21 +18,19 @@ class RegretsTableViewController: UITableViewController {
             if let error = error {
                 NSLog("Error fetching from table view: \(error)")
             }
-            guard let regrets = regrets else { return }
-            
-            if regrets != self.regrets {
-                self.regretsDict = [:]
-                for regret in regrets {
-                    if self.regretsDict.keys.contains(regret.stockSymbol) {
-                        guard let currentRegret = self.regretsDict[regret.stockSymbol] else { return }
-                        self.regretsDict.updateValue(currentRegret + 1, forKey: regret.stockSymbol)
-                    } else {
-                        self.regretsDict[regret.stockSymbol] = 1
-                    }
-                }
-                self.regrets = regrets
-                self.regretsSorted = self.regretsDict.valueKeySorted
-            }
+//            if regrets != self.regrets {
+//                self.regretsDict = [:]
+//                for regret in regrets {
+//                    if self.regretsDict.keys.contains(regret.stockSymbol) {
+//                        guard let currentRegret = self.regretsDict[regret.stockSymbol] else { return }
+//                        self.regretsDict.updateValue(currentRegret + 1, forKey: regret.stockSymbol)
+//                    } else {
+//                        self.regretsDict[regret.stockSymbol] = 1
+//                    }
+//                }
+//                self.regrets = regrets
+//                self.regretsSorted = self.regretsDict.valueKeySorted
+//            }
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -45,13 +40,14 @@ class RegretsTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Array(regretsDict.keys).count
+        return apiController.regrets.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RegretCell", for: indexPath)
-        cell.textLabel?.text = regretsSorted[indexPath.row].key
-        cell.detailTextLabel?.text = "\(regretsSorted[indexPath.row].value) regrets"
+        let regret = apiController.regrets[indexPath.row]
+        cell.textLabel?.text = regret.stock
+        cell.detailTextLabel?.text = "\(regret.author)"
         return cell
     }
     

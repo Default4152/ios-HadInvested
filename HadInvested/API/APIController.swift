@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class APIController {
     private let firebaseURL = URL(string: "https://hadinvested.firebaseio.com/")!
-    let formatter = DateFormatter()
+    private let formatter = DateFormatter()
+    var regrets: [Regret] = []
     
     func getStockDataForSpecifiedDate(with stock: String, date: Date, completion: @escaping (StockData?) -> Void) {
         formatter.dateFormat = "dd-MM-yyyy"
@@ -98,7 +100,7 @@ class APIController {
             }
         }.resume()
     }
-
+    /*
     func putRegretToFirebase(with regret: Regret, completion: @escaping (Error?) -> Void) {
         let identifier = regret.identifier
         let url = firebaseURL.appendingPathComponent(identifier).appendingPathExtension("json")
@@ -121,11 +123,10 @@ class APIController {
 
             completion(nil)
         }.resume()
-    }
-
+    }*/
+    
     func getRegretsFromFirebase(completion: @escaping (Error?, [Regret]?) -> Void) {
         let url = firebaseURL.appendingPathExtension("json")
-        var regrets: [Regret] = []
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
                 NSLog("Error with getting regrets: \(error)")
@@ -141,13 +142,13 @@ class APIController {
 
             do {
                 let decoder = JSONDecoder()
-                let regretsJSON = try decoder.decode(Regrets.self, from: data).values
-                regrets = regretsJSON.compactMap { $0 }
+                let regretsJSON = try decoder.decode(RegretPosts.self, from: data)
+                self.regrets = regretsJSON.regrets.filter { $0.value.userID == Auth.auth().currentUser?.uid }.values.compactMap { $0 }
             } catch let error {
                 NSLog("Error decoding data: \(error)")
             }
 
-            completion(nil, regrets)
+            completion(nil, self.regrets)
         }.resume()
     }
 }

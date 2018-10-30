@@ -9,6 +9,8 @@
 import UIKit
 import NVActivityIndicatorView
 import SCLAlertView
+import Firebase
+import FirebaseAuth
 
 class CalculateResultViewController: UIViewController, NVActivityIndicatorViewable {
     // MARK: - Properties
@@ -138,14 +140,27 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
     }
 
     @IBAction func addRegret(_ sender: Any) {
-        guard let symbol = symbol else { return }
-        let regret = Regret(dateOfRegret: formatter.string(from: Date()), stockSymbol: symbol)
-        apiController.putRegretToFirebase(with: regret) { (error) in
-            if let error = error {
-                NSLog("Error putting regret to firebase via addRegret: \(error)")
-                return
-            }
-        }
+        guard let symbol = symbol,
+            let amount = amount,
+            let datePicker = datePicker else { return }
+        
+        // Get USER ID to create regret
+        // Random key for this particular regret "post"
+        let uid = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference()
+        let key = ref.child("regrets").childByAutoId().key // Specific string for only 1 post
+        
+        let regretDict = ["userID": uid as Any,
+                      "dateOfRegret": formatter.string(from: Date()),
+                      "author": Auth.auth().currentUser?.displayName as Any,
+                      "stock": symbol,
+                      "amount": amount,
+                      "finalAmount": finalAmount,
+                      "dateCalculated": formatter.string(from: datePicker.date)] as [String : Any]
+        
+        let regretPost = ["\(key!)": regretDict]
+        ref.child("regrets").updateChildValues(regretPost) // updateChildValues, don't replace
+
         navigationController?.popViewController(animated: true)
     }
 }

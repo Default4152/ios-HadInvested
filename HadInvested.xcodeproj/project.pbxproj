@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		136086CC215B3EE8007B0113 /* Regret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136086CB215B3EE8007B0113 /* Regret.swift */; };
+		136086CC215B3EE8007B0113 /* Regrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136086CB215B3EE8007B0113 /* Regrets.swift */; };
 		13752A762187C93E007EC382 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13752A752187C93E007EC382 /* AuthViewController.swift */; };
 		13752A79218826CE007EC382 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13752A78218826CE007EC382 /* DateExtension.swift */; };
 		13752A7B2188CDDE007EC382 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13752A7A2188CDDD007EC382 /* GoogleService-Info.plist */; };
@@ -46,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		136086CB215B3EE8007B0113 /* Regret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regret.swift; sourceTree = "<group>"; };
+		136086CB215B3EE8007B0113 /* Regrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regrets.swift; sourceTree = "<group>"; };
 		13752A752187C93E007EC382 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		13752A78218826CE007EC382 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		13752A7A2188CDDD007EC382 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 			children = (
 				13A504B821597D34008BA32E /* CryptoData.swift */,
 				13A504BB21597D52008BA32E /* StockData.swift */,
-				136086CB215B3EE8007B0113 /* Regret.swift */,
+				136086CB215B3EE8007B0113 /* Regrets.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -512,7 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				136086CC215B3EE8007B0113 /* Regret.swift in Sources */,
+				136086CC215B3EE8007B0113 /* Regrets.swift in Sources */,
 				13752A79218826CE007EC382 /* DateExtension.swift in Sources */,
 				13A504B121595D2E008BA32E /* RegretsTableViewController.swift in Sources */,
 				13A5047C21594CEA008BA32E /* AppDelegate.swift in Sources */,
