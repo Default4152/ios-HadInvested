@@ -298,6 +298,11 @@
 				TargetAttributes = {
 					13A5047721594CEA008BA32E = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 					13A5048B21594CEB008BA32E = {
 						CreatedOnToolsVersion = 10.0;
@@ -373,7 +378,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		18E2CFFAA9D48CC9143D063B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

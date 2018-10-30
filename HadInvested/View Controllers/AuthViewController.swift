@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
-class AuthViewController: UIViewController {
+class AuthViewController: UIViewController, GIDSignInUIDelegate {
+    @IBOutlet var googleLoginButton: GIDSignInButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signIn()
     }
 }
