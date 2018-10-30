@@ -16,7 +16,7 @@ class APIController {
         formatter.dateFormat = "dd-MM-yyyy"
         
         let chosenDate = formatter.string(from: date)
-        let url = URL(string: "https://api.intrinio.com/prices?identifier=\(stock)&start_date=\(chosenDate)&end_date=\(chosenDate)&frequency=daily&api_key=OjRjOTYyMDFiYzc4MWUzNDgxMmRiMjM0NTFhMjQ2Zjc2")!
+        let url = URL(string: "https://api.intrinio.com/prices?identifier=\(stock.uppercased())&start_date=\(chosenDate)&end_date=\(chosenDate)&frequency=daily&api_key=OjRjOTYyMDFiYzc4MWUzNDgxMmRiMjM0NTFhMjQ2Zjc2")!
         
         let urlSession = URLSession.shared
         let stockDataURL = URLRequest(url: url)
@@ -46,7 +46,8 @@ class APIController {
     func getStockDataForToday(with stock: String, completion: @escaping (StockData?) -> Void) {
         formatter.dateFormat = "dd-MM-yyyy"
         let today = formatter.string(from: Date())
-        let url = URL(string: "https://api.intrinio.com/prices?identifier=\(stock)&start_date=\(today)&end_date=\(today)&frequency=daily&api_key=OjRjOTYyMDFiYzc4MWUzNDgxMmRiMjM0NTFhMjQ2Zjc2")!
+        let pastThreeDays = formatter.string(from: Date.yesterday.dayBefore.dayBefore)
+        let url = URL(string: "https://api.intrinio.com/prices?identifier=\(stock.uppercased())&start_date=\(pastThreeDays)&end_date=\(today)&frequency=daily&api_key=OjRjOTYyMDFiYzc4MWUzNDgxMmRiMjM0NTFhMjQ2Zjc2")!
         
         let urlSession = URLSession.shared
         let stockDataURL = URLRequest(url: url)
@@ -61,6 +62,10 @@ class APIController {
             do {
                 let decoder = JSONDecoder()
                 let stockData = try decoder.decode(Quotes.self, from: data)
+                if (stockData.resultCount == 0) {
+                    completion(nil)
+                    return
+                }
                 completion(stockData.data[0])
             } catch {
                 NSLog("Error decoding data: \(error)")

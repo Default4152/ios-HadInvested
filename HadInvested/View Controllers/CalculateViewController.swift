@@ -31,6 +31,7 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
     
     override func viewDidLoad() {
         amountTextField.delegate = self
+        symbolTextField.delegate = self
         calculateButton.layer.cornerRadius = 4
         datePicker.maximumDate = Date()
         backButton.tintColor = .white
@@ -41,9 +42,17 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let allowedCharacters = CharacterSet.decimalDigits
-        let characterSet = CharacterSet(charactersIn: string)
-        return allowedCharacters.isSuperset(of: characterSet)
+        if textField == amountTextField {
+            let allowedCharacters = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacters.isSuperset(of: characterSet)
+        }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -10,8 +10,6 @@ import UIKit
 import NVActivityIndicatorView
 import SCLAlertView
 
-
-
 class CalculateResultViewController: UIViewController, NVActivityIndicatorViewable {
     // MARK: - Properties
     var apiController = APIController()
@@ -44,7 +42,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
         fetchData()
     }
 
-    private func removeAnimationAndWarn() {
+    func removeAnimationAndWarn() {
         DispatchQueue.main.async {
             _ = SCLAlertView().showWarning(self.kWarningTitle, subTitle: self.kWarningSubtitle)
             self.navigationController?.popViewController(animated: true)
@@ -52,7 +50,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
         }
     }
 
-    private func fetchData() {
+    func fetchData() {
         guard let amountHadInvestedLabel = amountHadInvestedLabel,
             let symbolLabel = symbolLabel,
             let dateLabel = dateLabel,
