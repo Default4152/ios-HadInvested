@@ -10,6 +10,7 @@
 		136086CC215B3EE8007B0113 /* Regret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136086CB215B3EE8007B0113 /* Regret.swift */; };
 		13752A762187C93E007EC382 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13752A752187C93E007EC382 /* AuthViewController.swift */; };
 		13752A79218826CE007EC382 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13752A78218826CE007EC382 /* DateExtension.swift */; };
+		13752A7B2188CDDE007EC382 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13752A7A2188CDDD007EC382 /* GoogleService-Info.plist */; };
 		13A5047C21594CEA008BA32E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A5047B21594CEA008BA32E /* AppDelegate.swift */; };
 		13A5048121594CEA008BA32E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13A5047F21594CEA008BA32E /* Main.storyboard */; };
 		13A5048321594CEB008BA32E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A5048221594CEB008BA32E /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		136086CB215B3EE8007B0113 /* Regret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regret.swift; sourceTree = "<group>"; };
 		13752A752187C93E007EC382 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		13752A78218826CE007EC382 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		13752A7A2188CDDD007EC382 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		13A5047821594CEA008BA32E /* HadInvested.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HadInvested.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A5047B21594CEA008BA32E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13A5048021594CEA008BA32E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -148,7 +150,6 @@
 		13A5047A21594CEA008BA32E /* HadInvested */ = {
 			isa = PBXGroup;
 			children = (
-				13752A77218826C2007EC382 /* Extensions */,
 				13A5047B21594CEA008BA32E /* AppDelegate.swift */,
 				13A504B3215968CE008BA32E /* API */,
 				13A504AB21595A34008BA32E /* View Controllers */,
@@ -156,7 +157,9 @@
 				13A5048221594CEB008BA32E /* Assets.xcassets */,
 				13A5048421594CEB008BA32E /* LaunchScreen.storyboard */,
 				13A5048721594CEB008BA32E /* Info.plist */,
+				13752A7A2188CDDD007EC382 /* GoogleService-Info.plist */,
 				13A504BA21597D3A008BA32E /* Models */,
+				13752A77218826C2007EC382 /* Extensions */,
 			);
 			path = HadInvested;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				13A5047621594CEA008BA32E /* Resources */,
 				13A504B221596031008BA32E /* ShellScript */,
 				7B3EB1ADA8694618791B24F9 /* [CP] Embed Pods Frameworks */,
+				7AAEE5C9BAB1A2F80637FC53 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -331,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13A5048621594CEB008BA32E /* LaunchScreen.storyboard in Resources */,
+				13752A7B2188CDDE007EC382 /* GoogleService-Info.plist in Resources */,
 				13A5048321594CEB008BA32E /* Assets.xcassets in Resources */,
 				13A5048121594CEA008BA32E /* Main.storyboard in Resources */,
 			);
@@ -368,8 +373,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 		18E2CFFAA9D48CC9143D063B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -415,6 +419,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7AAEE5C9BAB1A2F80637FC53 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HadInvested/Pods-HadInvested-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HadInvested/Pods-HadInvested-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7B3EB1ADA8694618791B24F9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -424,15 +450,25 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HadInvested/Pods-HadInvested-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -660,7 +696,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Conner.Lambda.HadInvested;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Conner.HadInvested;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -679,7 +715,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Conner.Lambda.HadInvested;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Conner.HadInvested;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -8,6 +8,9 @@ target 'HadInvested' do
   # Pods for HadInvested
 pod 'NVActivityIndicatorView'
 pod 'SCLAlertView'
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'GoogleSignIn'
 
   target 'HadInvestedTests' do
     inherit! :search_paths
