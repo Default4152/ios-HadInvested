@@ -11,10 +11,11 @@ import SCLAlertView
 
 class RegretsTableViewController: UITableViewController {
     private var filteredRegrets: [Regret] = []
-    let dateFormatter = DateFormatter()
+    private let dateFormatter = DateFormatter()
+    private let apiController = APIController()
 
-    let apiController = APIController()
-
+    @IBOutlet var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         dateFormatter.dateFormat = "yyyy-MM-dd"
     }
@@ -130,8 +131,12 @@ class RegretsTableViewController: UITableViewController {
 extension RegretsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let searchText = searchText.lowercased()
-        let filtered = apiController.regrets.filter({ $0.stock.lowercased().contains(searchText) })
+        let filtered = apiController.regrets.filter({ $0.stock.lowercased().contains(searchText) || $0.dateOfRegret.lowercased().contains(searchText) })
         self.filteredRegrets = filtered.isEmpty ? apiController.regrets : filtered
         tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
