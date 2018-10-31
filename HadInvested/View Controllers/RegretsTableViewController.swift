@@ -33,12 +33,6 @@ class RegretsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        
-    }
-    
-    section
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredRegrets.count
     }
@@ -50,10 +44,11 @@ class RegretsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RegretCell", for: indexPath)
-        let regret = filteredRegrets[indexPath.row]
-        cell.textLabel?.text = regret.stock
-        cell.detailTextLabel?.text = "\(regret.dateOfRegret)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RegretCell", for: indexPath) as! RegretTableViewCell
+//        let regret =
+        cell.regret = filteredRegrets[indexPath.row]
+//        cell.textLabel?.text = regret.stock
+//        cell.detailTextLabel?.text = "\(regret.dateOfRegret)"
         return cell
     }
     
