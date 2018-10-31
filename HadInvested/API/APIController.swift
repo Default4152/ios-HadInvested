@@ -11,10 +11,21 @@ import FirebaseAuth
 
 class APIController {
     private let firebaseURL = URL(string: "https://hadinvested.firebaseio.com/")!
+    private let formatter = DateFormatter()
     var regrets: [Regret] = []
 
     func getStockDataForSpecifiedDate(with stock: String, date: String, completion: @escaping (StockData?) -> Void) {
-        let url = URL(string: "https://api.intrinio.com/prices?identifier=\(stock.uppercased())&start_date=\(date)&end_date=\(date)&frequency=daily&api_key=OjRjOTYyMDFiYzc4MWUzNDgxMmRiMjM0NTFhMjQ2Zjc2")!
+        formatter.dateFormat = "yyyy-MM-dd"
+        let url: URL!
+        let today = Date()
+        
+        if (date == formatter.string(from: today)) {
+            // The passed in date is today, use a different request URL
+            url = URL(string: "https://api.intrinio.com/prices?identifier=\(stock.uppercased())&start_date=\(formatter.string(from: today.dayBefore.dayBefore.dayBefore))&end_date=\(date)&frequency=daily&api_key=OjRjOTYyMDFiYzc4MWUzNDgxMmRiMjM0NTFhMjQ2Zjc2")!
+        } else {
+            url = URL(string: "https://api.intrinio.com/prices?identifier=\(stock.uppercased())&start_date=\(date)&end_date=\(date)&frequency=daily&api_key=OjRjOTYyMDFiYzc4MWUzNDgxMmRiMjM0NTFhMjQ2Zjc2")!
+        }
+
 
         let urlSession = URLSession.shared
         let stockDataURL = URLRequest(url: url)
