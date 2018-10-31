@@ -73,7 +73,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRS-TX-LHe">
                                         <rect key="frame" x="0.0" y="562" width="359" height="36"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.13725490196078433" green="0.35686274509803922" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Calculate">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -120,7 +120,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCk-OF-dLL">
                                 <rect key="frame" x="16" y="590" width="382" height="39"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.13725490196078433" green="0.35686274509803922" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="zOW-QZ-xTG"/>
                                 </constraints>
@@ -296,7 +296,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.35686274509999999" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Q28-ir-ArJ" firstAttribute="top" secondItem="7wy-OE-T6O" secondAttribute="top" constant="50" id="0Ux-Pa-75T"/>
                                     <constraint firstAttribute="trailing" secondItem="Q28-ir-ArJ" secondAttribute="trailing" constant="8" id="9Ew-BU-eL2"/>
@@ -304,7 +304,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.35686274509999999" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4Y3-jA-iOT" firstAttribute="bottom" secondItem="7wy-OE-T6O" secondAttribute="bottom" constant="350" id="93b-LJ-pnx"/>
                             <constraint firstItem="X8H-zM-fNc" firstAttribute="leading" secondItem="4Y3-jA-iOT" secondAttribute="leading" constant="16" id="a0Z-G8-yIl"/>
@@ -332,6 +332,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.13725490200000001" green="0.35686274509999999" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="JMx-AX-xih" kind="relationship" relationship="viewControllers" id="PIg-Ah-w5t"/>
@@ -403,14 +404,12 @@
         <scene sceneID="aKk-na-yCr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JMx-AX-xih" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calculate" image="calculator2" selectedImage="calculator2" id="WXe-dR-YjP">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="5"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Calculate" image="calculator2" selectedImage="calculator2" id="WXe-dR-YjP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="uRO-xt-Ri3">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.13725490196078433" green="0.35686274509803922" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
@@ -428,14 +427,12 @@
         <scene sceneID="cta-FB-hkT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WIS-Do-sDc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Regret Board" image="sadface" selectedImage="sadface" id="1sb-Sv-LQV">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="5"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Regret Board" image="sadface" selectedImage="sadface" id="1sb-Sv-LQV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="trO-g3-QO9">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.13725490196078433" green="0.35686274509803922" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		133639F8218A41B900A22A38 /* DoubleRoundExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133639F7218A41B900A22A38 /* DoubleRoundExtension.swift */; };
 		136086CC215B3EE8007B0113 /* Regrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136086CB215B3EE8007B0113 /* Regrets.swift */; };
 		13752A762187C93E007EC382 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13752A752187C93E007EC382 /* AuthViewController.swift */; };
 		13752A79218826CE007EC382 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13752A78218826CE007EC382 /* DateExtension.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		133639F7218A41B900A22A38 /* DoubleRoundExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleRoundExtension.swift; sourceTree = "<group>"; };
 		136086CB215B3EE8007B0113 /* Regrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regrets.swift; sourceTree = "<group>"; };
 		13752A752187C93E007EC382 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		13752A78218826CE007EC382 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				13752A78218826CE007EC382 /* DateExtension.swift */,
+				133639F7218A41B900A22A38 /* DoubleRoundExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				13A504B121595D2E008BA32E /* RegretsTableViewController.swift in Sources */,
 				13A5047C21594CEA008BA32E /* AppDelegate.swift in Sources */,
 				13A504AD21595B28008BA32E /* CalculateViewController.swift in Sources */,
+				133639F8218A41B900A22A38 /* DoubleRoundExtension.swift in Sources */,
 				13A504BC21597D52008BA32E /* StockData.swift in Sources */,
 				13A504AF21595B53008BA32E /* CalculateResultViewController.swift in Sources */,
 				13752A762187C93E007EC382 /* AuthViewController.swift in Sources */,
