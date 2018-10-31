@@ -151,7 +151,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
         let regretDict = ["userID": uid as Any,
                       "dateOfRegret": formatter.string(from: Date()),
                       "author": Auth.auth().currentUser?.displayName as Any,
-                      "stock": symbol,
+                      "stock": symbol.uppercased(),
                       "amount": amount,
                       "finalAmount": finalAmount,
                       "dateCalculated": formatter.string(from: datePicker.date)] as [String : Any]
