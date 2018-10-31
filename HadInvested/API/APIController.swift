@@ -26,7 +26,6 @@ class APIController {
             url = URL(string: "https://api.intrinio.com/prices?identifier=\(stock.uppercased())&start_date=\(date)&end_date=\(date)&frequency=daily&api_key=OjRjOTYyMDFiYzc4MWUzNDgxMmRiMjM0NTFhMjQ2Zjc2")!
         }
 
-
         let urlSession = URLSession.shared
         let stockDataURL = URLRequest(url: url)
 

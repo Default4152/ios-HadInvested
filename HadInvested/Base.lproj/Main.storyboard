@@ -346,31 +346,42 @@
         <scene sceneID="kLu-h7-NUA">
             <objects>
                 <tableViewController id="Xhp-nt-43N" customClass="RegretsTableViewController" customModule="HadInvested" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6zZ-g1-Ana">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6zZ-g1-Ana">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" placeholder="Search Regrets" showsCancelButton="YES" id="4jE-8L-6iN">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                            <connections>
+                                <outlet property="delegate" destination="Xhp-nt-43N" id="V6x-YB-LCY"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegretCell" textLabel="5Ac-Bx-XgL" detailTextLabel="8Fk-i2-pnk" rowHeight="45" style="IBUITableViewCellStyleValue1" id="4Aw-IR-JX6">
-                                <rect key="frame" x="0.0" y="28" width="414" height="45"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegretCell" textLabel="5Ac-Bx-XgL" detailTextLabel="8Fk-i2-pnk" rowHeight="55" style="IBUITableViewCellStyleValue1" id="4Aw-IR-JX6">
+                                <rect key="frame" x="0.0" y="84" width="414" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Aw-IR-JX6" id="giD-CL-33O">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="54.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Ac-Bx-XgL">
-                                            <rect key="frame" x="20.000000000000004" y="12.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
+                                            <rect key="frame" x="20.000000000000004" y="18" width="33.333333333333336" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Fk-i2-pnk">
-                                            <rect key="frame" x="335.33333333333331" y="12.999999999999998" width="58.666666666666664" height="20.333333333333332"/>
+                                            <rect key="frame" x="335.33333333333331" y="18" width="58.666666666666664" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -392,7 +403,9 @@
         <scene sceneID="aKk-na-yCr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JMx-AX-xih" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calculate" image="calculator2" selectedImage="calculator2" id="WXe-dR-YjP"/>
+                    <tabBarItem key="tabBarItem" title="Calculate" image="calculator2" selectedImage="calculator2" id="WXe-dR-YjP">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="uRO-xt-Ri3">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -415,13 +428,16 @@
         <scene sceneID="cta-FB-hkT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WIS-Do-sDc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Regret Board" image="sadface" selectedImage="sadface" id="1sb-Sv-LQV"/>
+                    <tabBarItem key="tabBarItem" title="Regret Board" image="sadface" selectedImage="sadface" id="1sb-Sv-LQV">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="trO-g3-QO9">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">

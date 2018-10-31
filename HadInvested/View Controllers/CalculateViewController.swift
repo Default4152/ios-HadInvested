@@ -47,7 +47,9 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
     }
     
     @IBAction func calculate(_ sender: Any) {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData, nil)
+        guard let symbolTextFieldText = symbolTextField.text, !symbolTextFieldText.isEmpty,
+            let amountTextFieldText = amountTextField.text, !amountTextFieldText.isEmpty else { return }
+            NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData, nil)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -65,8 +67,8 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let symbol = symbolTextField.text,
-            let amount = amountTextField.text else { return }
+        guard let symbol = symbolTextField.text, !symbol.isEmpty,
+            let amount = amountTextField.text, !amount.isEmpty else { return }
         if segue.identifier == "ShowCalculationSegue" {
             if let calculatedVC = segue.destination as? CalculateResultViewController {
                 calculatedVC.amount = amount
