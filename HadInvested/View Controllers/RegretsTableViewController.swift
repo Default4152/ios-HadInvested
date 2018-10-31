@@ -11,7 +11,13 @@ import SCLAlertView
 
 class RegretsTableViewController: UITableViewController {
     private var filteredRegrets: [Regret] = []
+    let dateFormatter = DateFormatter()
+
     let apiController = APIController()
+
+    override func viewDidLoad() {
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -21,8 +27,14 @@ class RegretsTableViewController: UITableViewController {
                 NSLog("Error fetching from table view: \(error)")
             }
 
-            guard let regrets = regrets else { return }
-
+            guard var regrets = regrets else { return }
+            
+            regrets = regrets.sorted(by: {
+                guard let dateOne = self.dateFormatter.date(from: $0.dateOfRegret),
+                    let dateTwo = self.dateFormatter.date(from: $1.dateOfRegret) else { return true }
+                return dateOne > dateTwo
+            })
+            
             self.filteredRegrets = regrets
 
             DispatchQueue.main.async {
@@ -32,7 +44,6 @@ class RegretsTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredRegrets.count
     }
@@ -45,27 +56,24 @@ class RegretsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RegretCell", for: indexPath) as! RegretTableViewCell
-//        let regret =
         cell.regret = filteredRegrets[indexPath.row]
-//        cell.textLabel?.text = regret.stock
-//        cell.detailTextLabel?.text = "\(regret.dateOfRegret)"
         return cell
     }
-    
+
     // MARK: - Private
     private func generatePopupDetail(regret: Regret) {
         let screenSize = UIScreen.main.bounds
         let boldAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)]
         let normalAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .regular)]
-        
+
         let appearance = SCLAlertView.SCLAppearance(
             kWindowWidth: screenSize.width - 45.0,
             kWindowHeight: screenSize.height * 0.30
         )
-        
+
         let alertView = SCLAlertView(appearance: appearance)
         let subview = UIView(frame: CGRect(x: 0.0, y: 0.0, width: screenSize.width - 45.0, height: screenSize.height * 0.30))
-        
+
         let stockLabel = UILabel(frame: CGRect(x: 16.0, y: 10, width: screenSize.width - 100.0, height: 25))
         let stockLabelText = NSMutableAttributedString(string: "Stock", attributes: boldAttribute)
         let stockLabelNormalText = NSMutableAttributedString(string: ": \(regret.stock)", attributes: normalAttribute)
@@ -73,7 +81,7 @@ class RegretsTableViewController: UITableViewController {
         stockLabel.attributedText = stockLabelText
         stockLabel.textAlignment = NSTextAlignment.left
         subview.addSubview(stockLabel)
-        
+
         let authorLabel = UILabel(frame: CGRect(x: 16.0, y: stockLabel.frame.maxY + 7.0, width: screenSize.width - 100.0, height: 25.0))
         let authorLabelText = NSMutableAttributedString(string: "Author", attributes: boldAttribute)
         let authorLabelNormalText = NSMutableAttributedString(string: ": \(regret.author)", attributes: normalAttribute)
@@ -81,7 +89,7 @@ class RegretsTableViewController: UITableViewController {
         authorLabel.attributedText = authorLabelText
         authorLabel.textAlignment = NSTextAlignment.left
         subview.addSubview(authorLabel)
-        
+
         let amountEnteredLabel = UILabel(frame: CGRect(x: 16.0, y: authorLabel.frame.maxY + 7.0, width: screenSize.width - 100.0, height: 25.0))
         let amountEnteredLabelText = NSMutableAttributedString(string: "Amount", attributes: boldAttribute)
         let amountEnteredLabelNormalText = NSMutableAttributedString(string: ": $\(regret.amount)", attributes: normalAttribute)
@@ -89,7 +97,7 @@ class RegretsTableViewController: UITableViewController {
         amountEnteredLabel.attributedText = amountEnteredLabelText
         amountEnteredLabel.textAlignment = NSTextAlignment.left
         subview.addSubview(amountEnteredLabel)
-        
+
         let calculatedAmountLabel = UILabel(frame: CGRect(x: 16.0, y: amountEnteredLabel.frame.maxY + 7.0, width: screenSize.width - 100.0, height: 25.0))
         let calculatedAmountLabelText = NSMutableAttributedString(string: "Would have made", attributes: boldAttribute)
         let calculatedAmountLabelNormalText = NSMutableAttributedString(string: ": $\(regret.finalAmount.rounded(toPlaces: 2))", attributes: normalAttribute)
@@ -97,7 +105,7 @@ class RegretsTableViewController: UITableViewController {
         calculatedAmountLabel.attributedText = calculatedAmountLabelText
         calculatedAmountLabel.textAlignment = NSTextAlignment.left
         subview.addSubview(calculatedAmountLabel)
-        
+
         let dateChosenLabel = UILabel(frame: CGRect(x: 16.0, y: calculatedAmountLabel.frame.maxY + 7.0, width: screenSize.width - 100.0, height: 25.0))
         let dateChosenLabelText = NSMutableAttributedString(string: "Date Chosen", attributes: boldAttribute)
         let dateChosenLabelNormalText = NSMutableAttributedString(string: ": \(regret.dateCalculated)", attributes: normalAttribute)
@@ -105,7 +113,7 @@ class RegretsTableViewController: UITableViewController {
         dateChosenLabel.attributedText = dateChosenLabelText
         dateChosenLabel.textAlignment = NSTextAlignment.left
         subview.addSubview(dateChosenLabel)
-        
+
         let userIdLabel = UILabel(frame: CGRect(x: 16.0, y: dateChosenLabel.frame.maxY + 7.0, width: screenSize.width - 100.0, height: 25.0))
         let userIdLabelText = NSMutableAttributedString(string: "UID", attributes: boldAttribute)
         let userIdLabelNormalText = NSMutableAttributedString(string: ": \(regret.userID)", attributes: normalAttribute)
@@ -113,7 +121,7 @@ class RegretsTableViewController: UITableViewController {
         userIdLabel.attributedText = userIdLabelText
         userIdLabel.textAlignment = NSTextAlignment.left
         subview.addSubview(userIdLabel)
-        
+
         alertView.customSubview = subview
         alertView.showInfo(regret.dateOfRegret, subTitle: "")
     }
