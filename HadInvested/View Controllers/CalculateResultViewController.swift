@@ -106,8 +106,8 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                     self.removeAnimationAndWarn()
                     return
                 }
-
-                self.apiController.getStockDataForToday(with: symbol, completion: { (todayStockData) in
+                
+                self.apiController.getStockDataForSpecifiedDate(with: symbol, date: Date(), completion: { (todayStockData) in
                     self.todaysPrice = todayStockData
 
                     guard let amount = Double(amount),

@@ -99,7 +99,7 @@
             </objects>
             <point key="canvasLocation" x="2972" y="-344.07796101949026"/>
         </scene>
-        <!--Calculate Result View Controller-->
+        <!--Results-->
         <scene sceneID="s67-oE-AXq">
             <objects>
                 <viewController id="Jm7-JL-un6" customClass="CalculateResultViewController" customModule="HadInvested" customModuleProvider="target" sceneMemberID="viewController">
@@ -178,7 +178,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nFK-rq-Nrl"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ztz-fX-Koh"/>
+                    <navigationItem key="navigationItem" title="Results" id="ztz-fX-Koh"/>
                     <connections>
                         <outlet property="addRegretButton" destination="yCk-OF-dLL" id="RCK-Bw-bRz"/>
                         <outlet property="amountHadInvestedLabel" destination="7lP-fr-d1J" id="7xZ-Te-zKX"/>
@@ -282,7 +282,7 @@
             </objects>
             <point key="canvasLocation" x="1018" y="69"/>
         </scene>
-        <!--Regrets Board-->
+        <!--My Regrets Board-->
         <scene sceneID="kLu-h7-NUA">
             <objects>
                 <tableViewController id="Xhp-nt-43N" customClass="RegretsTableViewController" customModule="HadInvested" customModuleProvider="target" sceneMemberID="viewController">
@@ -322,7 +322,7 @@
                             <outlet property="delegate" destination="Xhp-nt-43N" id="wcc-a3-hts"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Regrets Board" id="R52-Ct-4Ek"/>
+                    <navigationItem key="navigationItem" title="My Regrets Board" id="R52-Ct-4Ek"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VR1-kT-cfs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
