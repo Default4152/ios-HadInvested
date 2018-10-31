@@ -11,13 +11,10 @@ import FirebaseAuth
 
 class APIController {
     private let firebaseURL = URL(string: "https://hadinvested.firebaseio.com/")!
-    private let formatter = DateFormatter()
     var regrets: [Regret] = []
     
-    func getStockDataForSpecifiedDate(with stock: String, date: Date, completion: @escaping (StockData?) -> Void) {
-        formatter.dateFormat = "dd-MM-yyyy"
-        let chosenDate = formatter.string(from: date)
-        let url = URL(string: "https://api.intrinio.com/prices?identifier=\(stock.uppercased())&start_date=\(chosenDate)&end_date=\(chosenDate)&frequency=daily&api_key=OjRjOTYyMDFiYzc4MWUzNDgxMmRiMjM0NTFhMjQ2Zjc2")!
+    func getStockDataForSpecifiedDate(with stock: String, date: String, completion: @escaping (StockData?) -> Void) {
+        let url = URL(string: "https://api.intrinio.com/prices?identifier=\(stock.uppercased())&start_date=\(date)&end_date=\(date)&frequency=daily&api_key=OjRjOTYyMDFiYzc4MWUzNDgxMmRiMjM0NTFhMjQ2Zjc2")!
         
         let urlSession = URLSession.shared
         let stockDataURL = URLRequest(url: url)

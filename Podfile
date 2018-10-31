@@ -12,7 +12,7 @@ pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'GoogleSignIn'
-
+pod 'DayDatePicker'
   target 'HadInvestedTests' do
     inherit! :search_paths
     # Pods for testing

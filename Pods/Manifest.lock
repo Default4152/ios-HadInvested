@@ -1,4 +1,5 @@
 PODS:
+  - DayDatePicker (1.7)
   - Firebase/Auth (5.9.0):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.0.4)
@@ -90,6 +91,7 @@ PODS:
   - SCLAlertView (0.8)
 
 DEPENDENCIES:
+  - DayDatePicker
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -99,6 +101,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - DayDatePicker
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -118,6 +121,7 @@ SPEC REPOS:
     - SCLAlertView
 
 SPEC CHECKSUMS:
+  DayDatePicker: 62929f136aefb56fabb27cde9709fea4c8dd3b9f
   Firebase: 383fa29aca93e371cab776b48a5c66544d3c2003
   FirebaseAnalytics: 831f1f127f4a75698e9875a87bf7e2668730d953
   FirebaseAuth: 504b198ceb3472dca5c65bb95544ea44cfc9439e
@@ -136,6 +140,6 @@ SPEC CHECKSUMS:
   NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
 
-PODFILE CHECKSUM: 42dd51d1ecfcd7adc4b94a2666137494dd79a16c
+PODFILE CHECKSUM: b38f23955927629c37f022a9a00a458d2b8879e5
 
 COCOAPODS: 1.5.3

@@ -53,12 +53,10 @@
                                             </switch>
                                         </subviews>
                                     </stackView>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="lxu-5S-brd">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SI5-mu-EDP" customClass="DayDatePickerView" customModule="DayDatePicker">
                                         <rect key="frame" x="0.0" y="135" width="320" height="248"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="559501195.25957799">
-                                            <!--2018-09-24 16:59:55 +0000-->
-                                        </date>
-                                    </datePicker>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRS-TX-LHe">
                                         <rect key="frame" x="0.0" y="391" width="320" height="36"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -90,7 +88,7 @@
                         <outlet property="amountTextField" destination="wej-Dc-HQf" id="Bgp-y5-5e1"/>
                         <outlet property="backButton" destination="9wl-Nt-wdt" id="Xu2-V2-Uzj"/>
                         <outlet property="calculateButton" destination="tRS-TX-LHe" id="zn4-rp-zkF"/>
-                        <outlet property="datePicker" destination="lxu-5S-brd" id="qGA-b1-Asb"/>
+                        <outlet property="datePicker" destination="SI5-mu-EDP" id="o2H-2p-e90"/>
                         <outlet property="isCrypto" destination="Bis-Hc-snI" id="ikL-aP-rLm"/>
                         <outlet property="symbolTextField" destination="CyH-Vo-5k8" id="uML-Wb-ZUu"/>
                     </connections>

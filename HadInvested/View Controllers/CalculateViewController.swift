@@ -8,8 +8,11 @@
 
 import UIKit
 import NVActivityIndicatorView
+import DayDatePicker
 
-class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UITextFieldDelegate {
+class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UITextFieldDelegate, DayDatePickerViewDelegate {
+
+    var chosenDate: String?
     let activityData = ActivityData(size: nil,
                                     message: "Calculating...",
                                     messageFont: nil,
@@ -25,16 +28,23 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
     @IBOutlet var backButton: UIBarButtonItem!
     @IBOutlet var symbolTextField: UITextField!
     @IBOutlet var amountTextField: UITextField!
-    @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var isCrypto: UISwitch!
     @IBOutlet var calculateButton: UIButton!
+    @IBOutlet var datePicker: DayDatePickerView!
     
     override func viewDidLoad() {
+        datePicker.delegate = self
+        datePicker.setMaxDate(Date(), animated: true)
+        datePicker.setFeedback(hasHapticFeedback: false, hasSound: false)
+        datePicker.overlayView.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 0.4452054795)
         amountTextField.delegate = self
         symbolTextField.delegate = self
         calculateButton.layer.cornerRadius = 4
-        datePicker.maximumDate = Date()
         backButton.tintColor = .white
+    }
+    
+    func didSelectDate(day: NSInteger, month: NSInteger, year: NSInteger) {
+        chosenDate = String(format: "%02d-%02d-%04d", day, month, year)
     }
     
     @IBAction func calculate(_ sender: Any) {
@@ -63,7 +73,7 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
                 calculatedVC.amount = amount
                 calculatedVC.symbol = symbol
                 calculatedVC.isCrypto = isCrypto.isOn
-                calculatedVC.datePicker = datePicker
+                calculatedVC.chosenDate = chosenDate
             }
         }
     }

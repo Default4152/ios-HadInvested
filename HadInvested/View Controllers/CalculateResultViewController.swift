@@ -11,6 +11,7 @@ import NVActivityIndicatorView
 import SCLAlertView
 import Firebase
 import FirebaseAuth
+import DayDatePicker
 
 class CalculateResultViewController: UIViewController, NVActivityIndicatorViewable {
     // MARK: - Properties
@@ -22,7 +23,8 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
     let yesterdaysDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())
     let formatter = DateFormatter()
     var finalAmount = 0.0
-    var datePicker: UIDatePicker?
+//    var datePicker: DayDatePickerView?
+    var chosenDate: String?
     var fadeOut = NVActivityIndicatorView.DEFAULT_FADE_OUT_ANIMATION
     var numFormatter = NumberFormatter()
     let kWarningTitle = "Something went wrong."
@@ -59,10 +61,9 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
             let finalAmountLabel = finalAmountLabel,
             let amount = amount,
             let symbol = symbol,
-            let datePicker = datePicker,
-            let yesterdaysDate = yesterdaysDate else { return }
+            let yesterdaysDate = yesterdaysDate,
+            let chosenDate = chosenDate else { return }
 
-        let chosenDate = formatter.string(from: datePicker.date)
         let yesterdayAsString = self.formatter.string(from: yesterdaysDate)
 
         if isCrypto {
@@ -101,13 +102,13 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                 NVActivityIndicatorPresenter.sharedInstance.stopAnimating(self.fadeOut)
             }
         } else {
-            apiController.getStockDataForSpecifiedDate(with: symbol, date: datePicker.date) { (stockData) in
+            apiController.getStockDataForSpecifiedDate(with: symbol, date: chosenDate) { (stockData) in
                 guard let stockData = stockData else {
                     self.removeAnimationAndWarn()
                     return
                 }
                 
-                self.apiController.getStockDataForSpecifiedDate(with: symbol, date: Date(), completion: { (todayStockData) in
+                self.apiController.getStockDataForSpecifiedDate(with: symbol, date: self.formatter.string(from: Date()), completion: { (todayStockData) in
                     self.todaysPrice = todayStockData
 
                     guard let amount = Double(amount),
@@ -141,8 +142,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
 
     @IBAction func addRegret(_ sender: Any) {
         guard let symbol = symbol,
-            let amount = amount,
-            let datePicker = datePicker else { return }
+            let amount = amount else { return }
         
         let uid = Auth.auth().currentUser?.uid // Get User ID to create regret post in Firebase
         let ref = Database.database().reference()
@@ -154,7 +154,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
                       "stock": symbol.uppercased(),
                       "amount": amount,
                       "finalAmount": finalAmount,
-                      "dateCalculated": formatter.string(from: datePicker.date)] as [String : Any]
+                      "dateCalculated": chosenDate as Any] as [String : Any]
         
         let regretPost = ["\(key!)": regretDict]
         ref.child("regrets").updateChildValues(regretPost) // updateChildValues, don't replace
