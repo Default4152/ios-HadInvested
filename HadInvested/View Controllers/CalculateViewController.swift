@@ -28,7 +28,6 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
     @IBOutlet var backButton: UIBarButtonItem!
     @IBOutlet var symbolTextField: UITextField!
     @IBOutlet var amountTextField: UITextField!
-    @IBOutlet var isCrypto: UISwitch!
     @IBOutlet var calculateButton: UIButton!
     @IBOutlet var datePicker: DayDatePickerView!
     
@@ -44,7 +43,7 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
     }
     
     func didSelectDate(day: NSInteger, month: NSInteger, year: NSInteger) {
-        chosenDate = String(format: "%02d-%02d-%04d", day, month, year)
+        chosenDate = String(format: "%04d-%02d-%02d", year, month, day)
     }
     
     @IBAction func calculate(_ sender: Any) {
@@ -72,7 +71,6 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
             if let calculatedVC = segue.destination as? CalculateResultViewController {
                 calculatedVC.amount = amount
                 calculatedVC.symbol = symbol
-                calculatedVC.isCrypto = isCrypto.isOn
                 calculatedVC.chosenDate = chosenDate
             }
         }
