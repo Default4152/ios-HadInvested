@@ -11,7 +11,16 @@ import SCLAlertView
 import FirebaseAuth
 
 class RegretsTableViewController: UITableViewController {
-    private var filteredRegrets: [Regret] = []
+    private var filteredRegrets: [Regret] = [] {
+        didSet {
+            let restorationId = self.restorationIdentifier
+            if restorationId == "PublicRegretsStoryboard" {
+                filteredRegrets = filteredRegrets.filter { $0.isPublic }
+            } else {
+                filteredRegrets = filteredRegrets.filter { $0.userID == Auth.auth().currentUser?.uid }
+            }
+        }
+    }
     private let dateFormatter = DateFormatter()
     private let apiController = APIController()
 
@@ -37,13 +46,6 @@ class RegretsTableViewController: UITableViewController {
                     let dateTwo = self.dateFormatter.date(from: $1.dateOfRegret) else { return false }
                 return dateOne < dateTwo
             })
-            
-            let restorationId = self.restorationIdentifier
-            if restorationId == "PublicRegretsStoryboard" {
-                regrets = regrets.filter { $0.isPublic }
-            } else {
-                regrets = regrets.filter { $0.userID == Auth.auth().currentUser?.uid }
-            }
             
             self.filteredRegrets = regrets
 
@@ -148,6 +150,7 @@ extension RegretsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let searchText = searchText.lowercased()
         let filtered = apiController.regrets.filter({ $0.stock.lowercased().contains(searchText) || $0.dateOfRegret.lowercased().contains(searchText) })
+        
         self.filteredRegrets = filtered.isEmpty ? apiController.regrets : filtered
         tableView.reloadData()
     }
