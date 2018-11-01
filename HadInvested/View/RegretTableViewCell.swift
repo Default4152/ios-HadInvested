@@ -16,6 +16,8 @@ class RegretTableViewCell: UITableViewCell {
     }
     
     var parentRestorationIdentifier: String?
+    let dateFormatter = DateFormatter()
+    let regretDateFormatter = DateFormatter()
     
     @IBOutlet var amountCalculatedLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
@@ -24,19 +26,34 @@ class RegretTableViewCell: UITableViewCell {
     
     private func updateViews() {
         guard let parentRestorationIdentifer = parentRestorationIdentifier else { return }
-        
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        regretDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+
         if let regret = regret {
             if parentRestorationIdentifer == "PublicRegretsStoryboard" {
                 amountLabel.text = regret.author
-                amountCalculatedLabel.text = "$\(regret.finalAmount.rounded(toPlaces: 2))"
-                dateLabel.text = regret.dateOfRegret
+                amountCalculatedLabel.text = "\(formatCurrency(value: regret.finalAmount))"
+                if let dateOfRegret = regretDateFormatter.date(from: regret.dateOfRegret) {
+                    dateLabel.text = dateFormatter.string(from: dateOfRegret)
+                }
                 stockLabel.text = regret.stock
             } else {
                 amountLabel.text = "$\(regret.amount)"
-                amountCalculatedLabel.text = "$\(regret.finalAmount.rounded(toPlaces: 2))"
-                dateLabel.text = regret.dateOfRegret
+                amountCalculatedLabel.text = "\(formatCurrency(value: regret.finalAmount))"
+                if let dateOfRegret = regretDateFormatter.date(from: regret.dateOfRegret) {
+                    dateLabel.text = dateFormatter.string(from: dateOfRegret)
+                }
                 stockLabel.text = regret.stock
             }
         }
+    }
+    
+    private func formatCurrency(value: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.maximumFractionDigits = 2
+        formatter.locale = Locale(identifier: Locale.current.identifier)
+        let result = formatter.string(from: value as NSNumber)
+        return result!
     }
 }

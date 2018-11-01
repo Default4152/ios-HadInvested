@@ -111,7 +111,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
         let isPublicRegret = isPublicRegretSwitch.isOn
         
         let regretDict = ["userID": uid as Any,
-                          "dateOfRegret": formatter.string(from: Date()),
+                          "dateOfRegret": Date().description,
                           "author": Auth.auth().currentUser?.displayName as Any,
                           "stock": symbol.uppercased(),
                           "amount": amount,

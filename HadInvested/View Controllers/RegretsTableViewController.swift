@@ -19,6 +19,7 @@ class RegretsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -37,12 +38,7 @@ class RegretsTableViewController: UITableViewController {
                 return dateOne > dateTwo
             })
             
-            let restorationId = self.restorationIdentifier
-            if restorationId == "PublicRegretsStoryboard" {
-                regrets = regrets.filter { $0.isPublic }
-            } else {
-                regrets = regrets.filter { $0.userID == Auth.auth().currentUser?.uid }
-            }
+
             
             self.filteredRegrets = regrets
 
@@ -133,7 +129,13 @@ class RegretsTableViewController: UITableViewController {
         subview.addSubview(userIdLabel)
 
         alertView.customSubview = subview
-        alertView.showInfo(regret.dateOfRegret, subTitle: "")
+        
+        let regretDateFormatter = DateFormatter()
+        regretDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        if let dateOfRegret = regretDateFormatter.date(from: regret.dateOfRegret) {
+            let dateAsString = dateFormatter.string(from: dateOfRegret)
+            alertView.showInfo(dateAsString, subTitle: "")
+        }
     }
 }
 
