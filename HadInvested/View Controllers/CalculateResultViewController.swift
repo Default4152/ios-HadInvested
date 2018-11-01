@@ -35,6 +35,7 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var finalAmountLabel: UILabel!
     @IBOutlet var addRegretButton: UIButton!
+    @IBOutlet var isPublicRegretSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,13 +108,16 @@ class CalculateResultViewController: UIViewController, NVActivityIndicatorViewab
         let ref = Database.database().reference()
         let key = ref.child("regrets").childByAutoId().key // Specific string for only 1 post, Random key for this particular regret "post"
         
+        let isPublicRegret = isPublicRegretSwitch.isOn
+        
         let regretDict = ["userID": uid as Any,
                           "dateOfRegret": formatter.string(from: Date()),
                           "author": Auth.auth().currentUser?.displayName as Any,
                           "stock": symbol.uppercased(),
                           "amount": amount,
                           "finalAmount": finalAmount,
-                          "dateCalculated": chosenDate as Any] as [String : Any]
+                          "dateCalculated": chosenDate as Any,
+                          "isPublic": isPublicRegret] as [String : Any]
         
         let regretPost = ["\(key!)": regretDict]
         ref.child("regrets").updateChildValues(regretPost) // updateChildValues, don't replace

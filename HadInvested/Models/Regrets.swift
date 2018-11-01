@@ -16,4 +16,5 @@ struct Regret: Codable {
     let amount, author, dateCalculated, dateOfRegret: String
     let finalAmount: Double
     let stock, userID: String
+    let isPublic: Bool
 }

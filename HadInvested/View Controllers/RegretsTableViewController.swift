@@ -8,6 +8,7 @@
 
 import UIKit
 import SCLAlertView
+import FirebaseAuth
 
 class RegretsTableViewController: UITableViewController {
     private var filteredRegrets: [Regret] = []
@@ -36,6 +37,13 @@ class RegretsTableViewController: UITableViewController {
                 return dateOne > dateTwo
             })
             
+            let restorationId = self.restorationIdentifier
+            if restorationId == "PublicRegretsStoryboard" {
+                regrets = regrets.filter { $0.isPublic }
+            } else {
+                regrets = regrets.filter { $0.userID == Auth.auth().currentUser?.uid }
+            }
+            
             self.filteredRegrets = regrets
 
             DispatchQueue.main.async {
@@ -57,6 +65,7 @@ class RegretsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RegretCell", for: indexPath) as! RegretTableViewCell
+        cell.parentRestorationIdentifier = self.restorationIdentifier
         cell.regret = filteredRegrets[indexPath.row]
         return cell
     }

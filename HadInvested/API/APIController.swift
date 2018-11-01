@@ -69,7 +69,7 @@ class APIController {
             do {
                 let decoder = JSONDecoder()
                 let regretsJSON = try decoder.decode(RegretPosts.self, from: data)
-                self.regrets = regretsJSON.regrets.filter { $0.value.userID == Auth.auth().currentUser?.uid }.values.compactMap { $0 }
+                self.regrets = regretsJSON.regrets.values.compactMap { $0 }
             } catch let error {
                 NSLog("Error decoding data: \(error)")
             }

@@ -9,23 +9,34 @@
 import UIKit
 
 class RegretTableViewCell: UITableViewCell {
+    var regret: Regret? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    var parentRestorationIdentifier: String?
+    
     @IBOutlet var amountCalculatedLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var amountLabel: UILabel!
     @IBOutlet var stockLabel: UILabel!
     
     private func updateViews() {
+        guard let parentRestorationIdentifer = parentRestorationIdentifier else { return }
+        
         if let regret = regret {
-            amountCalculatedLabel.text = "$\(regret.finalAmount.rounded(toPlaces: 2))"
-            dateLabel.text = regret.dateOfRegret
-            amountLabel.text = "$\(regret.amount)"
-            stockLabel.text = regret.stock
-        }
-    }
-    
-    var regret: Regret? {
-        didSet {
-            updateViews()
+            if parentRestorationIdentifer == "PublicRegretsStoryboard" {
+                amountLabel.text = regret.author
+                amountCalculatedLabel.text = "$\(regret.finalAmount.rounded(toPlaces: 2))"
+                dateLabel.text = regret.dateOfRegret
+                stockLabel.text = regret.stock
+            } else {
+                amountLabel.text = "$\(regret.amount)"
+                amountCalculatedLabel.text = "$\(regret.finalAmount.rounded(toPlaces: 2))"
+                dateLabel.text = regret.dateOfRegret
+                stockLabel.text = regret.stock
+            }
         }
     }
 }
