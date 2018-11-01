@@ -149,13 +149,23 @@ class RegretsTableViewController: UITableViewController {
 extension RegretsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let searchText = searchText.lowercased()
+        updateViews(searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func updateViews(_ searchText: String) {
         let filtered = apiController.regrets.filter({ $0.stock.lowercased().contains(searchText) || $0.dateOfRegret.lowercased().contains(searchText) })
         
         self.filteredRegrets = filtered.isEmpty ? apiController.regrets : filtered
         tableView.reloadData()
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        searchBar.text = ""
+        updateViews("")
     }
 }
