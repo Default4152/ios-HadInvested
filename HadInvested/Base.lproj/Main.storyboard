@@ -97,6 +97,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="HadInvested" id="MOC-RZ-J89">
                         <barButtonItem key="backBarButtonItem" title="Back" id="9wl-Nt-wdt"/>
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="dqo-Jx-FfI">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="logoutTapped:" destination="lKm-0s-IJn" id="1Nd-6v-0FM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="amountTextField" destination="wej-Dc-HQf" id="Bgp-y5-5e1"/>
@@ -272,7 +278,7 @@
         <!--Auth View Controller-->
         <scene sceneID="bQ0-hy-C4K">
             <objects>
-                <viewController id="Qes-RP-CBR" customClass="AuthViewController" customModule="HadInvested" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthViewController" id="Qes-RP-CBR" customClass="AuthViewController" customModule="HadInvested" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TXc-gJ-35t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -299,6 +305,9 @@
                                                 <state key="normal" title="Login with Google">
                                                     <color key="titleColor" red="0.80784313730000001" green="0.3294117647" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="signInTapped:" destination="Qes-RP-CBR" eventType="touchUpInside" id="Fcx-7k-5kF"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBs-AH-9LT">
                                                 <rect key="frame" x="0.0" y="79" width="298" height="71"/>

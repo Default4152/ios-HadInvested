@@ -9,6 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 import DayDatePicker
+import FirebaseAuth
 
 class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UITextFieldDelegate, DayDatePickerViewDelegate {
 
@@ -56,6 +57,20 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
         guard let symbolTextFieldText = symbolTextField.text, !symbolTextFieldText.isEmpty,
             let amountTextFieldText = amountTextField.text, !amountTextFieldText.isEmpty else { return }
             NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData, nil)
+    }
+    
+    @IBAction func logoutTapped(_ sender: Any) {
+        print("Tapped")
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let authVC = storyboard.instantiateViewController(withIdentifier: "AuthViewController") as! AuthViewController
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = authVC
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

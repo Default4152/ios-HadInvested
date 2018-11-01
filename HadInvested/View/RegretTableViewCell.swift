@@ -30,20 +30,17 @@ class RegretTableViewCell: UITableViewCell {
         regretDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
 
         if let regret = regret {
+            guard let dateOfRegret = regretDateFormatter.date(from: regret.dateOfRegret) else { return }
             if parentRestorationIdentifer == "PublicRegretsStoryboard" {
                 amountLabel.textColor = .red
                 amountLabel.text = regret.author
                 amountCalculatedLabel.text = "\(formatCurrency(value: regret.finalAmount))"
-                if let dateOfRegret = regretDateFormatter.date(from: regret.dateOfRegret) {
-                    dateLabel.text = dateFormatter.string(from: dateOfRegret)
-                }
+                dateLabel.text = dateFormatter.string(from: dateOfRegret)
                 stockLabel.text = regret.stock
             } else {
                 amountLabel.text = "$\(regret.amount)"
                 amountCalculatedLabel.text = "\(formatCurrency(value: regret.finalAmount))"
-                if let dateOfRegret = regretDateFormatter.date(from: regret.dateOfRegret) {
-                    dateLabel.text = dateFormatter.string(from: dateOfRegret)
-                }
+                dateLabel.text = dateFormatter.string(from: dateOfRegret)
                 stockLabel.text = regret.stock
             }
         }
