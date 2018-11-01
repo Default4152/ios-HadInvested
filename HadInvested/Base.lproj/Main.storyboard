@@ -613,7 +613,7 @@
         <scene sceneID="vWN-CZ-erw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oyd-rb-hTf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Public Regrets" image="sadface" id="e3l-E4-rxh"/>
+                    <tabBarItem key="tabBarItem" title="Public Regrets" image="announcement" id="e3l-E4-rxh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="8Wc-ot-zJw">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -634,6 +634,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="announcement" width="37.5" height="37.5"/>
         <image name="calculator2" width="37.5" height="37.5"/>
         <image name="sadface" width="60" height="60"/>
     </resources>
