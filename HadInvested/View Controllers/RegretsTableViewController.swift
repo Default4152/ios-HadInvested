@@ -34,11 +34,16 @@ class RegretsTableViewController: UITableViewController {
             
             regrets = regrets.sorted(by: {
                 guard let dateOne = self.dateFormatter.date(from: $0.dateOfRegret),
-                    let dateTwo = self.dateFormatter.date(from: $1.dateOfRegret) else { return true }
-                return dateOne > dateTwo
+                    let dateTwo = self.dateFormatter.date(from: $1.dateOfRegret) else { return false }
+                return dateOne < dateTwo
             })
             
-
+            let restorationId = self.restorationIdentifier
+            if restorationId == "PublicRegretsStoryboard" {
+                regrets = regrets.filter { $0.isPublic }
+            } else {
+                regrets = regrets.filter { $0.userID == Auth.auth().currentUser?.uid }
+            }
             
             self.filteredRegrets = regrets
 

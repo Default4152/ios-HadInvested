@@ -42,6 +42,12 @@ class CalculateViewController: UIViewController, NVActivityIndicatorViewable, UI
         backButton.tintColor = .white
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        amountTextField.text = ""
+        symbolTextField.text = ""
+    }
+    
     func didSelectDate(day: NSInteger, month: NSInteger, year: NSInteger) {
         chosenDate = String(format: "%04d-%02d-%02d", year, month, day)
     }

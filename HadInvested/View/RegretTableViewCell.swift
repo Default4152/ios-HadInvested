@@ -31,6 +31,7 @@ class RegretTableViewCell: UITableViewCell {
 
         if let regret = regret {
             if parentRestorationIdentifer == "PublicRegretsStoryboard" {
+                amountLabel.textColor = .red
                 amountLabel.text = regret.author
                 amountCalculatedLabel.text = "\(formatCurrency(value: regret.finalAmount))"
                 if let dateOfRegret = regretDateFormatter.date(from: regret.dateOfRegret) {
