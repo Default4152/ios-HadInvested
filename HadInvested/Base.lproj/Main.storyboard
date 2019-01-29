@@ -261,7 +261,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nFK-rq-Nrl"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Results" id="ztz-fX-Koh"/>
+                    <navigationItem key="navigationItem" title="Results" id="ztz-fX-Koh">
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="2rQ-Yv-Q3y">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addRegretButton" destination="yCk-OF-dLL" id="RCK-Bw-bRz"/>
                         <outlet property="amountHadInvestedLabel" destination="7lP-fr-d1J" id="7xZ-Te-zKX"/>
@@ -461,7 +465,11 @@
                             <outlet property="delegate" destination="Xhp-nt-43N" id="wcc-a3-hts"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Regrets Board" id="R52-Ct-4Ek"/>
+                    <navigationItem key="navigationItem" title="My Regrets Board" id="R52-Ct-4Ek">
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="n6L-DU-OIj">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="4jE-8L-6iN" id="rY8-Rd-fAq"/>
                     </connections>
@@ -493,11 +501,11 @@
             </objects>
             <point key="canvasLocation" x="2032.8" y="-344.07796101949026"/>
         </scene>
-        <!--Regret Board-->
+        <!--My Regrets-->
         <scene sceneID="cta-FB-hkT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WIS-Do-sDc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Regret Board" image="sadface" selectedImage="sadface" id="1sb-Sv-LQV"/>
+                    <tabBarItem key="tabBarItem" title="My Regrets" image="sadface" selectedImage="sadface" id="1sb-Sv-LQV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="trO-g3-QO9">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -609,7 +617,11 @@
                             <outlet property="delegate" destination="dsf-UR-bYH" id="DbS-vh-Sa3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Public Regrets" id="RJV-Vj-dod"/>
+                    <navigationItem key="navigationItem" title="Public Regrets" id="RJV-Vj-dod">
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="wtb-vb-NSq">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="Lxb-f7-388" id="5oN-2l-h7f"/>
                     </connections>
@@ -628,6 +640,10 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.13725490196078433" green="0.35686274509803922" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>

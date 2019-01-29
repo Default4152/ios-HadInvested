@@ -19,15 +19,23 @@ class RegretsTableViewController: UITableViewController {
             } else {
                 filteredRegrets = filteredRegrets.filter { $0.userID == Auth.auth().currentUser?.uid }
             }
+            
+            filteredRegrets = filteredRegrets.sorted(by: {
+                guard let dateOne = self.regretDateFormatter.date(from: $0.dateOfRegret),
+                    let dateTwo = self.regretDateFormatter.date(from: $1.dateOfRegret) else { return true }
+                return dateOne > dateTwo
+            })
         }
     }
     private let dateFormatter = DateFormatter()
     private let apiController = APIController()
+    private let regretDateFormatter = DateFormatter()
 
     @IBOutlet var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        regretDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
     }
 
@@ -39,13 +47,7 @@ class RegretsTableViewController: UITableViewController {
                 NSLog("Error fetching from table view: \(error)")
             }
 
-            guard var regrets = regrets else { return }
-            
-            regrets = regrets.sorted(by: {
-                guard let dateOne = self.dateFormatter.date(from: $0.dateOfRegret),
-                    let dateTwo = self.dateFormatter.date(from: $1.dateOfRegret) else { return false }
-                return dateOne < dateTwo
-            })
+            guard let regrets = regrets else { return }
             
             self.filteredRegrets = regrets
 
